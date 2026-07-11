@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Integrado - Gestão da APS</title>
+  <meta name="description" content="Central de painéis e dados estratégicos da Atenção Primária à Saúde." />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D8TE54RKD3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D8TE54RKD3', {
+      'page_title': 'Painel Integrado - Gestão da APS'
+    });
+
+    // Dispara um evento no GA4 sempre que um card de painel/link for clicado,
+    // identificando qual painel/link foi acessado e para onde ele leva.
+    function rastrearClique(nome, categoria, destino) {
+      gtag('event', 'clique_painel', {
+        'painel_nome': nome,
+        'categoria': categoria,
+        'destino': destino
+      });
+    }
+
+    // Se a imagem do painel ainda não foi adicionada em /imagens, mostra um placeholder no lugar.
+    function handleImgError(img) {
+      var placeholder = document.createElement('div');
+      placeholder.className = 'thumb-placeholder';
+      placeholder.textContent = 'Imagem em breve';
+      img.replaceWith(placeholder);
+    }
+  </script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      color: #1a2b3c;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #005a9c;
+      color: #fff;
+      padding: 24px 32px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    header img.logo {
+      height: 56px;
+      width: auto;
+      flex-shrink: 0;
+    }
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    header p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    section.grupo {
+      margin-bottom: 36px;
+    }
+    section.grupo h2 {
+      font-size: 1.05rem;
+      color: #005a9c;
+      border-bottom: 2px solid #d0dae4;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+    }
+    .thumb {
+      width: 100%;
+      height: 160px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #e8edf2;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .thumb-placeholder {
+      width: 100%;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8a99ab;
+      font-size: 0.8rem;
+      background: #e8edf2;
+      border-radius: 6px;
+      text-align: center;
+      padding: 0 12px;
+    }
+    .card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-title h3 {
+      font-size: 1rem;
+      color: #1a2b3c;
+    }
+    .badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .badge.interno {
+      background: #fde8d7;
+      color: #b3540a;
+    }
+    .badge.publico {
+      background: #dcefe0;
+      color: #1c7a3c;
+    }
+    .card p.desc {
+      font-size: 0.85rem;
+      color: #4b5c6e;
+      line-height: 1.4;
+      flex: 1;
+    }
+    .card a.acessar {
+      align-self: flex-start;
+      margin-top: 4px;
+      background: #005a9c;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background 0.15s ease;
+    }
+    .card a.acessar:hover {
+      background: #00457a;
+    }
+    footer {
+      text-align: center;
+      padding: 14px;
+      font-size: 0.75rem;
+      color: #6b7c93;
+      background: #e8edf2;
+      border-top: 1px solid #d0dae4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="imagens/logo_sus.png" alt="Logo SUS">
+    <div class="title-block">
+      <h1>Painel Integrado - Gestão da APS</h1>
+      <p>Central de painéis e dados estratégicos da Atenção Primária à Saúde</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="grupo">
+      <h2>Painéis Públicos</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="thumb">
+            <img src="imagens/panorama-aps.png" alt="Prévia do Painel Panorama APS" loading="lazy" onerror="handleImgError(this)">
+          </div>
+          <div class="card-title">
+            <h3>Painel Panorama APS</h3>
+            <span class="badge publico">Público</span>
+          </div>
+          <p class="desc">Apresenta um retrato abrangente da situação do município, com informações estratégicas sobre estrutura, indicadores e financiamento da APS.</p>
+          <a class="acessar" href="https://apspanorama.onrender.com/" target="_blank" rel="noopener"
+             onclick="rastrearClique('Painel Panorama APS', 'Público', 'https://apspanorama.onrender.com/')">Acessar painel</a>
+        </div>
+
+        <div class="card">
+          <div class="thumb">
+            <img src="imagens/notas-tecnicas.png" alt="Prévia do painel Notas Técnicas" loading="lazy" onerror="handleImgError(this)">
+          </div>
+          <div class="card-title">
+            <h3>Notas Técnicas</h3>
+            <span class="badge publico">Público</span>
+          </div>
+          <p class="desc">Reúne dados detalhados e organizados para subsidiar respostas rápidas, consistentes e tecnicamente qualificadas às demandas de informação.</p>
+          <a class="acessar" href="https://notas-tecnicas-aps.onrender.com/" target="_blank" rel="noopener"
+             onclick="rastrearClique('Notas Técnicas', 'Público', 'https://notas-tecnicas-aps.onrender.com/')">Acessar painel</a>
+        </div>
+
+        <div class="card">
+          <div class="thumb">
+            <img src="imagens/credenciamentos.png" alt="Prévia do Painel dos Credenciamentos da APS" loading="lazy" onerror="handleImgError(this)">
+          </div>
+          <div class="card-title">
+            <h3>Painel dos Credenciamentos da APS</h3>
+            <span class="badge publico">Público</span>
+          </div>
+          <p class="desc">Disponibiliza informações sobre prazos de credenciamento, com o objetivo de orientar os municípios e apoiar a implantação oportuna.</p>
+          <a class="acessar" href="https://painel-credenciamentos.onrender.com/" target="_blank" rel="noopener"
+             onclick="rastrearClique('Painel dos Credenciamentos da APS', 'Público', 'https://painel-credenciamentos.onrender.com/')">Acessar painel</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="grupo">
+      <h2>Painéis Internos (Power BI)</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="thumb">
+            <img src="imagens/combos-equipamentos.png" alt="Prévia do painel Distribuição dos Combos de Equipamentos para UBS" loading="lazy" onerror="handleImgError(this)">
+          </div>
+          <div class="card-title">
+            <h3>Distribuição dos Combos de Equipamentos para UBS</h3>
+            <span class="badge interno">Interno</span>
+          </div>
+          <p class="desc">Distribuição dos equipamentos por município, ampliando a transparência da ação e apoiando o acompanhamento da entrega dos combos para UBS.</p>
+          <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiZjdkMjIyMjUtZjhiNi00NmY3LTgwOTQtMTBkMzljZjFjYzkxIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
+             onclick="rastrearClique('Distribuição dos Combos de Equipamentos para UBS', 'Interno', 'powerbi_combos_equipamentos')">Acessar painel</a>
+        </div>
+
+        <div class="card">
+          <div class="thumb">
+            <img src="imagens/censo-nacional-ubs.png" alt="Prévia do painel Censo Nacional das UBS" loading="lazy" onerror="handleImgError(this)">
+          </div>
+          <div class="card-title">
+            <h3>Censo Nacional das UBS</h3>
+            <span class="badge interno">Interno</span>
+          </div>
+          <p class="desc">Resultados do Censo Nacional das UBS, com informações que subsidiam análises, debates internos e reflexões sobre a qualificação da gestão.</p>
+          <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiZjdkMjIyMjUtZjhiNi00NmY3LTgwOTQtMTBkMzljZjFjYzkxIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
+             onclick="rastrearClique('Censo Nacional das UBS', 'Interno', 'powerbi_censo_nacional_ubs')">Acessar painel</a>
+        </div>
+
+        <div class="card">
+          <div class="thumb">
+            <img src="imagens/censo-ubs-fluvial.png" alt="Prévia do painel Censo das UBS Fluvial" loading="lazy" onerror="handleImgError(this)">
+          </div>
+          <div class="card-title">
+            <h3>Censo das UBS — Fluvial</h3>
+            <span class="badge interno">Interno</span>
+          </div>
+          <p class="desc">Informações específicas sobre as UBS Fluviais, permitindo análises direcionadas às singularidades da atenção à saúde em contextos fluviais.</p>
+          <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiMmNmNTQ1NWQtNzdmOC00OTg0LTlmZTMtNDg5NTc0OWE5NmRkIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
+             onclick="rastrearClique('Censo das UBS - Fluvial', 'Interno', 'powerbi_censo_ubs_fluvial')">Acessar painel</a>
+        </div>
+
+        <div class="card">
+          <div class="thumb">
+            <img src="imagens/aps-em-numeros.png" alt="Prévia do painel APS em Números" loading="lazy" onerror="handleImgError(this)">
+          </div>
+          <div class="card-title">
+            <h3>APS em Números</h3>
+            <span class="badge interno">Interno</span>
+          </div>
+          <p class="desc">Painel com indicadores consolidados da Atenção Primária à Saúde para apoio à gestão e à tomada de decisão.</p>
+          <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiOWRmOTNkZjktYjhkZC00NjI2LTk0YzQtMDEwNTY3OWQ5NWUzIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
+             onclick="rastrearClique('APS em Números', 'Interno', 'powerbi_aps_em_numeros')">Acessar painel</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="grupo">
+      <h2>Sistemas e Links Úteis</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="thumb">
+            <img src="imagens/egestor-aps.png" alt="Prévia do sistema e-Gestor APS" loading="lazy" onerror="handleImgError(this)">
+          </div>
+          <div class="card-title">
+            <h3>e-Gestor APS</h3>
+            <span class="badge publico">Público</span>
+          </div>
+          <p class="desc">Sistema oficial de gestão da Atenção Primária à Saúde do Ministério da Saúde.</p>
+          <a class="acessar" href="https://egestoraps.saude.gov.br/" target="_blank" rel="noopener"
+             onclick="rastrearClique('e-Gestor APS', 'Link útil', 'https://egestoraps.saude.gov.br/')">Acessar sistema</a>
+        </div>
+
+        <div class="card">
+          <div class="thumb">
+            <img src="imagens/investsus-paineis.png" alt="Prévia do painel InvestSUS Painéis" loading="lazy" onerror="handleImgError(this)">
+          </div>
+          <div class="card-title">
+            <h3>InvestSUS Painéis</h3>
+            <span class="badge publico">Público</span>
+          </div>
+          <p class="desc">Evolução mais recente dos municípios nos últimos 12 meses, com dados sobre equipes, cobertura, suspensões e financiamento da APS.</p>
+          <a class="acessar" href="https://investsuspaineis.saude.gov.br/extensions/CGIN_InvestsusPaineis/CGIN_InvestsusPaineis.html" target="_blank" rel="noopener"
+             onclick="rastrearClique('InvestSUS Painéis', 'Link útil', 'https://investsuspaineis.saude.gov.br/extensions/CGIN_InvestsusPaineis/CGIN_InvestsusPaineis.html')">Acessar painel</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Fonte: eGestor APS · CGFAP/SAPS
+  </footer>
+</body>
+</html>
