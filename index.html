@@ -41,7 +41,8 @@
       padding: 0;
     }
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
       background: #f0f4f8;
       color: #1a2b3c;
       min-height: 100vh;
@@ -65,14 +66,16 @@
       flex-shrink: 0;
     }
     header h1 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      line-height: 1.2;
+      font-size: 1.45rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
     }
     header p {
       font-size: 0.9rem;
-      opacity: 0.85;
-      margin-top: 4px;
+      font-weight: 300;
+      opacity: 0.88;
+      margin-top: 6px;
     }
     main {
       flex: 1;
@@ -85,11 +88,14 @@
       margin-bottom: 36px;
     }
     section.grupo h2 {
-      font-size: 1.05rem;
-      color: #005a9c;
-      border-bottom: 2px solid #d0dae4;
-      padding-bottom: 8px;
-      margin-bottom: 16px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #005baa;
+      border-bottom: 1px solid #d7e0e9;
+      padding-bottom: 10px;
+      margin-bottom: 18px;
     }
     .subgrupo {
       margin-bottom: 24px;
@@ -112,17 +118,18 @@
     }
     .card {
       background: #ffffff;
+      border: 1px solid #e6ecf2;
       border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 1px 2px rgba(16,24,40,0.04);
       padding: 18px 20px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+      border-color: #c9d6e2;
+      box-shadow: 0 4px 12px rgba(16,24,40,0.08);
     }
     .thumb {
       width: 100%;
@@ -158,24 +165,37 @@
       gap: 8px;
     }
     .card-title h3 {
-      font-size: 1rem;
+      font-size: 0.98rem;
+      font-weight: 600;
       color: #1a2b3c;
     }
     .badge {
-      font-size: 0.68rem;
-      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
       text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 4px;
+      letter-spacing: 0.03em;
       white-space: nowrap;
     }
+    .badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
     .badge.interno {
-      background: #fde8d7;
       color: #b3540a;
     }
+    .badge.interno .dot {
+      background: #d9822b;
+    }
     .badge.publico {
-      background: #dcefe0;
       color: #1c7a3c;
+    }
+    .badge.publico .dot {
+      background: #2fa85a;
     }
     .card p.desc {
       font-size: 0.85rem;
@@ -186,13 +206,13 @@
     .card a.acessar {
       align-self: flex-start;
       margin-top: 4px;
-      background: #005a9c;
+      background: #005baa;
       color: #fff;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 5px;
+      padding: 7px 14px;
+      border-radius: 6px;
       transition: background 0.15s ease;
     }
     .card a.acessar:hover {
@@ -227,7 +247,7 @@
           </div>
           <div class="card-title">
             <h3>Painel dos Credenciamentos da APS</h3>
-            <span class="badge publico">Público</span>
+            <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           <p class="desc">Disponibiliza informações sobre prazos de credenciamento, com o objetivo de orientar os municípios e apoiar a implantação oportuna.</p>
           <a class="acessar" href="https://painel-credenciamentos.onrender.com/" target="_blank" rel="noopener"
@@ -240,7 +260,7 @@
           </div>
           <div class="card-title">
             <h3>Painel Mais Médicos</h3>
-            <span class="badge publico">Público</span>
+            <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           <p class="desc">Ferramenta interativa e transparente do Ministério da Saúde voltada para o monitoramento e a gestão do Programa Mais Médicos.</p>
           <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiMTZkYzIxZGUtMTU5NS00NDllLWI4OGMtM2VhMzJmNDJkZWI4IiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9&pageName=ad4a2a374aec48992ed2" target="_blank" rel="noopener"
@@ -261,7 +281,7 @@
             </div>
             <div class="card-title">
               <h3>Painel Panorama APS</h3>
-              <span class="badge interno">Interno</span>
+              <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Apresenta um retrato abrangente da situação do município, com informações estratégicas sobre estrutura, indicadores e financiamento da APS.</p>
             <a class="acessar" href="https://apspanorama.onrender.com/" target="_blank" rel="noopener"
@@ -274,7 +294,7 @@
             </div>
             <div class="card-title">
               <h3>APS em Números</h3>
-              <span class="badge interno">Interno</span>
+              <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Painel com indicadores consolidados da Atenção Primária à Saúde para apoio à gestão e à tomada de decisão.</p>
             <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiOWRmOTNkZjktYjhkZC00NjI2LTk0YzQtMDEwNTY3OWQ5NWUzIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
@@ -287,7 +307,7 @@
             </div>
             <div class="card-title">
               <h3>Notas Técnicas</h3>
-              <span class="badge interno">Interno</span>
+              <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Reúne dados detalhados e organizados para subsidiar respostas rápidas, consistentes e tecnicamente qualificadas às demandas de informação.</p>
             <a class="acessar" href="https://notas-tecnicas-aps.onrender.com/" target="_blank" rel="noopener"
@@ -305,7 +325,7 @@
             </div>
             <div class="card-title">
               <h3>Censo Nacional das UBS</h3>
-              <span class="badge interno">Interno</span>
+              <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Resultados do Censo Nacional das UBS, com informações que subsidiam análises, debates internos e reflexões sobre a qualificação da gestão.</p>
             <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiZjdkMjIyMjUtZjhiNi00NmY3LTgwOTQtMTBkMzljZjFjYzkxIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
@@ -318,7 +338,7 @@
             </div>
             <div class="card-title">
               <h3>Censo das UBS — Fluvial</h3>
-              <span class="badge interno">Interno</span>
+              <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Informações específicas sobre as UBS Fluviais, permitindo análises direcionadas às singularidades da atenção à saúde em contextos fluviais.</p>
             <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiMmNmNTQ1NWQtNzdmOC00OTg0LTlmZTMtNDg5NTc0OWE5NmRkIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
@@ -336,7 +356,7 @@
             </div>
             <div class="card-title">
               <h3>Distribuição dos Combos de Equipamentos para UBS</h3>
-              <span class="badge interno">Interno</span>
+              <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Distribuição dos equipamentos por município, ampliando a transparência da ação e apoiando o acompanhamento da entrega dos combos para UBS.</p>
             <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiZTQ1MGE1MGYtOGUwZi00NTQzLWI0MWItMmRiMGMzMDU5OWQ5IiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
@@ -349,7 +369,7 @@
             </div>
             <div class="card-title">
               <h3>Painel de Monitoramento de Entregas dos Combos AgSUS</h3>
-              <span class="badge interno">Interno</span>
+              <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Distribuição dos equipamentos por município, ampliando a transparência da ação e apoiando o acompanhamento da entrega dos combos para UBS.</p>
             <a class="acessar" href="https://app.powerbi.com/groups/me/reports/15cef623-63dc-4a27-a26b-6ae2991eaf70/eb15333dd8d9040b1ce8?ctid=7673b0fd-2c63-4ac7-9d35-a71abe702c9b&amp;experience=power-bi" target="_blank" rel="noopener"
@@ -368,7 +388,7 @@
           </div>
           <div class="card-title">
             <h3>e-Gestor APS</h3>
-            <span class="badge publico">Público</span>
+            <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           <p class="desc">Sistema oficial de gestão da Atenção Primária à Saúde do Ministério da Saúde.</p>
           <a class="acessar" href="https://egestoraps.saude.gov.br/" target="_blank" rel="noopener"
@@ -381,7 +401,7 @@
           </div>
           <div class="card-title">
             <h3>InvestSUS Painéis</h3>
-            <span class="badge publico">Público</span>
+            <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           <p class="desc">Evolução mais recente dos municípios nos últimos 12 meses, com dados sobre equipes, cobertura, suspensões e financiamento da APS.</p>
           <a class="acessar" href="https://investsuspaineis.saude.gov.br/extensions/CGIN_InvestsusPaineis/CGIN_InvestsusPaineis.html" target="_blank" rel="noopener"
@@ -394,7 +414,7 @@
           </div>
           <div class="card-title">
             <h3>SIAPS</h3>
-            <span class="badge publico">Público</span>
+            <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           <p class="desc">O SIAPS (Sistema de Informação para a Atenção Primária à Saúde) é a plataforma oficial do Ministério da Saúde para monitoramento e gestão da Atenção Primária no SUS.</p>
           <a class="acessar" href="https://siaps.saude.gov.br/publico" target="_blank" rel="noopener"
