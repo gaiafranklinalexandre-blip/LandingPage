@@ -43,7 +43,7 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
-      background: #f0f4f8;
+      background: #f8fafc;
       color: #1a2b3c;
       min-height: 100vh;
       display: flex;
@@ -85,7 +85,7 @@
       padding: 32px 20px 48px;
     }
     section.grupo {
-      margin-bottom: 36px;
+      margin-bottom: 48px;
     }
     section.grupo h2 {
       font-size: 0.78rem;
@@ -114,22 +114,69 @@
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+      gap: 22px;
     }
     .card {
+      position: relative;
+      isolation: isolate;
       background: #ffffff;
       border: 1px solid #e6ecf2;
+      border-top: 4px solid #c9d6e2;
       border-radius: 8px;
       box-shadow: 0 1px 2px rgba(16,24,40,0.04);
-      padding: 18px 20px;
+      padding: 22px 24px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
     }
     .card:hover {
       border-color: #c9d6e2;
-      box-shadow: 0 4px 12px rgba(16,24,40,0.08);
+      box-shadow: 0 8px 20px rgba(16,24,40,0.1);
+      transform: translateY(-3px);
+    }
+    .card.cat-publico { border-top-color: #2fa85a; }
+    .card.cat-financiamento { border-top-color: #d9822b; }
+    .card.cat-censo-ubs { border-top-color: #7c4dd9; }
+    .card.cat-combos-ubs { border-top-color: #0aa3b5; }
+    .card.cat-sistemas { border-top-color: #005baa; }
+    .cat-icon {
+      margin-right: 6px;
+    }
+    .favorite-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(16,24,40,0.04);
+      color: #9aa8b8;
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .favorite-btn:hover {
+      background: rgba(217,130,11,0.12);
+    }
+    .favorite-btn.ativo {
+      color: #d98a0b;
+    }
+    .card a.acessar {
+      position: relative;
+      z-index: 1;
+    }
+    .card a.acessar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
     }
     .thumb {
       width: 100%;
@@ -226,6 +273,159 @@
       background: #e8edf2;
       border-top: 1px solid #d0dae4;
     }
+    .busca-bar {
+      background: #ffffff;
+      border-bottom: 1px solid #e6ecf2;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .busca-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 10px 14px;
+      border: 1px solid #d0dae4;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #1a2b3c;
+    }
+    .busca-input:focus {
+      outline: none;
+      border-color: #005baa;
+      box-shadow: 0 0 0 3px rgba(0,91,170,0.12);
+    }
+    .favoritos-toggle {
+      padding: 10px 16px;
+      border: 1px solid #d0dae4;
+      border-radius: 8px;
+      background: #fff;
+      color: #4b5c6e;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .favoritos-toggle.ativo {
+      background: #fff4e0;
+      border-color: #d98a0b;
+      color: #b3540a;
+    }
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+      color: #6b7c93;
+      font-size: 0.9rem;
+    }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(16,24,40,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+    .modal-overlay.aberto {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-painel {
+      background: #fff;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 1200px;
+      height: 88vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(16,24,40,0.3);
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 20px;
+      border-bottom: 1px solid #e6ecf2;
+      flex-shrink: 0;
+    }
+    .modal-header h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a2b3c;
+    }
+    .modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .modal-link {
+      font-size: 0.82rem;
+      color: #005baa;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .modal-link:hover {
+      text-decoration: underline;
+    }
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: 6px;
+      background: #f0f4f8;
+      color: #4b5c6e;
+      font-size: 1rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .modal-close:hover {
+      background: #e6ecf2;
+    }
+    .modal-body {
+      position: relative;
+      flex: 1;
+      background: #f8fafc;
+    }
+    .modal-body iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .modal-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7c93;
+      font-size: 0.9rem;
+      background: #f8fafc;
+    }
+    @media (max-width: 600px) {
+      .modal-overlay {
+        padding: 0;
+      }
+      .modal-painel {
+        height: 100vh;
+        border-radius: 0;
+      }
+    }
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -243,34 +443,41 @@
     </div>
   </header>
 
+  <div class="busca-bar">
+    <input type="search" class="busca-input" id="busca" placeholder="Pesquisar painel por nome ou palavra-chave..." oninput="aplicarFiltros()">
+    <button type="button" class="favoritos-toggle" id="favoritosToggle" onclick="alternarFavoritosToggle()">☆ Somente favoritos</button>
+  </div>
+
   <main>
     <section class="grupo">
       <h2>Painéis Públicos</h2>
       <div class="cards">
-        <div class="card">
+        <div class="card cat-publico" data-id="credenciamentos-aps">
+          <button class="favorite-btn" type="button" aria-label="Favoritar Painel dos Credenciamentos da APS" onclick="alternarFavorito(event, 'credenciamentos-aps', this)">☆</button>
           <div class="thumb">
             <img src="imagens/credenciamentos.png" alt="Prévia do Painel dos Credenciamentos da APS" loading="lazy" onerror="handleImgError(this)">
           </div>
           <div class="card-title">
-            <h3>Painel dos Credenciamentos da APS</h3>
+            <h3><span class="cat-icon">🌐</span>Painel dos Credenciamentos da APS</h3>
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           <p class="desc">Disponibiliza informações sobre prazos de credenciamento, com o objetivo de orientar os municípios e apoiar a implantação oportuna.</p>
           <a class="acessar" href="https://painel-credenciamentos.onrender.com/" target="_blank" rel="noopener"
-             onclick="rastrearClique('Painel dos Credenciamentos da APS', 'Público', 'https://painel-credenciamentos.onrender.com/')">Acessar painel</a>
+             onclick="rastrearClique('Painel dos Credenciamentos da APS', 'Público', 'https://painel-credenciamentos.onrender.com/')">Abrir →</a>
         </div>
 
-        <div class="card">
+        <div class="card cat-publico" data-id="mais-medicos">
+          <button class="favorite-btn" type="button" aria-label="Favoritar Painel Mais Médicos" onclick="alternarFavorito(event, 'mais-medicos', this)">☆</button>
           <div class="thumb">
             <img src="imagens/mais-medicos.png" alt="Prévia do Painel Mais Médicos" loading="lazy" onerror="handleImgError(this)">
           </div>
           <div class="card-title">
-            <h3>Painel Mais Médicos</h3>
+            <h3><span class="cat-icon">🌐</span>Painel Mais Médicos</h3>
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           <p class="desc">Ferramenta interativa e transparente do Ministério da Saúde voltada para o monitoramento e a gestão do Programa Mais Médicos.</p>
           <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiMTZkYzIxZGUtMTU5NS00NDllLWI4OGMtM2VhMzJmNDJkZWI4IiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9&pageName=ad4a2a374aec48992ed2" target="_blank" rel="noopener"
-             onclick="rastrearClique('Painel Mais Médicos', 'Público', 'powerbi_mais_medicos')">Acessar painel</a>
+             onclick="rastrearClique('Painel Mais Médicos', 'Público', 'powerbi_mais_medicos')">Abrir →</a>
         </div>
       </div>
     </section>
@@ -281,43 +488,47 @@
       <div class="subgrupo">
         <h3 class="subgrupo-titulo">Financiamento</h3>
         <div class="cards">
-          <div class="card">
+          <div class="card cat-financiamento" data-id="panorama-aps">
+            <button class="favorite-btn" type="button" aria-label="Favoritar Painel Panorama APS" onclick="alternarFavorito(event, 'panorama-aps', this)">☆</button>
             <div class="thumb">
               <img src="imagens/panorama-aps.png" alt="Prévia do Painel Panorama APS" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3>Painel Panorama APS</h3>
+              <h3><span class="cat-icon">💰</span>Painel Panorama APS</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Apresenta um retrato abrangente da situação do município, com informações estratégicas sobre estrutura, indicadores e financiamento da APS.</p>
             <a class="acessar" href="https://apspanorama.onrender.com/" target="_blank" rel="noopener"
-               onclick="rastrearClique('Painel Panorama APS', 'Interno', 'https://apspanorama.onrender.com/')">Acessar painel</a>
+               onclick="rastrearClique('Painel Panorama APS', 'Interno', 'https://apspanorama.onrender.com/')">Abrir →</a>
           </div>
 
-          <div class="card">
+          <div class="card cat-financiamento" data-id="aps-em-numeros">
+            <button class="favorite-btn" type="button" aria-label="Favoritar APS em Números" onclick="alternarFavorito(event, 'aps-em-numeros', this)">☆</button>
             <div class="thumb">
               <img src="imagens/aps-em-numeros.png" alt="Prévia do painel APS em Números" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3>APS em Números</h3>
+              <h3><span class="cat-icon">💰</span>APS em Números</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Painel com indicadores consolidados da Atenção Primária à Saúde para apoio à gestão e à tomada de decisão.</p>
             <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiOWRmOTNkZjktYjhkZC00NjI2LTk0YzQtMDEwNTY3OWQ5NWUzIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
-               onclick="rastrearClique('APS em Números', 'Interno', 'powerbi_aps_em_numeros')">Acessar painel</a>
+               onclick="rastrearClique('APS em Números', 'Interno', 'powerbi_aps_em_numeros')">Abrir →</a>
           </div>
 
-          <div class="card">
+          <div class="card cat-financiamento" data-id="notas-tecnicas">
+            <button class="favorite-btn" type="button" aria-label="Favoritar Notas Técnicas" onclick="alternarFavorito(event, 'notas-tecnicas', this)">☆</button>
             <div class="thumb">
               <img src="imagens/notas-tecnicas.png" alt="Prévia do painel Notas Técnicas" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3>Notas Técnicas</h3>
+              <h3><span class="cat-icon">💰</span>Notas Técnicas</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Reúne dados detalhados e organizados para subsidiar respostas rápidas, consistentes e tecnicamente qualificadas às demandas de informação.</p>
             <a class="acessar" href="https://notas-tecnicas-aps.onrender.com/" target="_blank" rel="noopener"
-               onclick="rastrearClique('Notas Técnicas', 'Interno', 'https://notas-tecnicas-aps.onrender.com/')">Acessar painel</a>
+               data-embed="https://notas-tecnicas-aps.onrender.com/"
+               onclick="return abrirPainel(event, this, 'Notas Técnicas', 'Interno')">Abrir →</a>
           </div>
         </div>
       </div>
@@ -325,30 +536,32 @@
       <div class="subgrupo">
         <h3 class="subgrupo-titulo">Censo Nacional das UBS</h3>
         <div class="cards">
-          <div class="card">
+          <div class="card cat-censo-ubs" data-id="censo-nacional-ubs">
+            <button class="favorite-btn" type="button" aria-label="Favoritar Censo Nacional das UBS" onclick="alternarFavorito(event, 'censo-nacional-ubs', this)">☆</button>
             <div class="thumb">
               <img src="imagens/censo-nacional-ubs.png" alt="Prévia do painel Censo Nacional das UBS" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3>Censo Nacional das UBS</h3>
+              <h3><span class="cat-icon">🏥</span>Censo Nacional das UBS</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Resultados do Censo Nacional das UBS, com informações que subsidiam análises, debates internos e reflexões sobre a qualificação da gestão.</p>
             <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiZjdkMjIyMjUtZjhiNi00NmY3LTgwOTQtMTBkMzljZjFjYzkxIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
-               onclick="rastrearClique('Censo Nacional das UBS', 'Interno', 'powerbi_censo_nacional_ubs')">Acessar painel</a>
+               onclick="rastrearClique('Censo Nacional das UBS', 'Interno', 'powerbi_censo_nacional_ubs')">Abrir →</a>
           </div>
 
-          <div class="card">
+          <div class="card cat-censo-ubs" data-id="censo-ubs-fluvial">
+            <button class="favorite-btn" type="button" aria-label="Favoritar Censo das UBS Fluvial" onclick="alternarFavorito(event, 'censo-ubs-fluvial', this)">☆</button>
             <div class="thumb">
               <img src="imagens/censo-ubs-fluvial.png" alt="Prévia do painel Censo das UBS Fluvial" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3>Censo das UBS — Fluvial</h3>
+              <h3><span class="cat-icon">🏥</span>Censo das UBS — Fluvial</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Informações específicas sobre as UBS Fluviais, permitindo análises direcionadas às singularidades da atenção à saúde em contextos fluviais.</p>
             <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiMmNmNTQ1NWQtNzdmOC00OTg0LTlmZTMtNDg5NTc0OWE5NmRkIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
-               onclick="rastrearClique('Censo das UBS - Fluvial', 'Interno', 'powerbi_censo_ubs_fluvial')">Acessar painel</a>
+               onclick="rastrearClique('Censo das UBS - Fluvial', 'Interno', 'powerbi_censo_ubs_fluvial')">Abrir →</a>
           </div>
         </div>
       </div>
@@ -356,30 +569,32 @@
       <div class="subgrupo">
         <h3 class="subgrupo-titulo">Combo de Equipamentos para UBS</h3>
         <div class="cards">
-          <div class="card">
+          <div class="card cat-combos-ubs" data-id="combos-equipamentos">
+            <button class="favorite-btn" type="button" aria-label="Favoritar Distribuição dos Combos de Equipamentos para UBS" onclick="alternarFavorito(event, 'combos-equipamentos', this)">☆</button>
             <div class="thumb">
               <img src="imagens/combos-equipamentos.png" alt="Prévia do painel Distribuição dos Combos de Equipamentos para UBS" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3>Distribuição dos Combos de Equipamentos para UBS</h3>
+              <h3><span class="cat-icon">⚙️</span>Distribuição dos Combos de Equipamentos para UBS</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Distribuição dos equipamentos por município, ampliando a transparência da ação e apoiando o acompanhamento da entrega dos combos para UBS.</p>
             <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiZTQ1MGE1MGYtOGUwZi00NTQzLWI0MWItMmRiMGMzMDU5OWQ5IiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
-               onclick="rastrearClique('Distribuição dos Combos de Equipamentos para UBS', 'Interno', 'powerbi_combos_equipamentos')">Acessar painel</a>
+               onclick="rastrearClique('Distribuição dos Combos de Equipamentos para UBS', 'Interno', 'powerbi_combos_equipamentos')">Abrir →</a>
           </div>
 
-          <div class="card">
+          <div class="card cat-combos-ubs" data-id="monitoramento-agsus">
+            <button class="favorite-btn" type="button" aria-label="Favoritar Painel de Monitoramento de Entregas dos Combos AgSUS" onclick="alternarFavorito(event, 'monitoramento-agsus', this)">☆</button>
             <div class="thumb">
               <img src="imagens/painel-agsus.png" alt="Prévia do Painel de Monitoramento de Entregas dos Combos AgSUS" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3>Painel de Monitoramento de Entregas dos Combos AgSUS</h3>
+              <h3><span class="cat-icon">⚙️</span>Painel de Monitoramento de Entregas dos Combos AgSUS</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             <p class="desc">Distribuição dos equipamentos por município, ampliando a transparência da ação e apoiando o acompanhamento da entrega dos combos para UBS.</p>
             <a class="acessar" href="https://app.powerbi.com/groups/me/reports/15cef623-63dc-4a27-a26b-6ae2991eaf70/eb15333dd8d9040b1ce8?ctid=7673b0fd-2c63-4ac7-9d35-a71abe702c9b&amp;experience=power-bi" target="_blank" rel="noopener"
-               onclick="rastrearClique('Painel de Monitoramento de Entregas dos Combos AgSUS', 'Interno', 'powerbi_agsus')">Acessar painel</a>
+               onclick="rastrearClique('Painel de Monitoramento de Entregas dos Combos AgSUS', 'Interno', 'powerbi_agsus')">Abrir →</a>
           </div>
         </div>
       </div>
@@ -388,50 +603,197 @@
     <section class="grupo">
       <h2>Sistemas e Links Úteis</h2>
       <div class="cards">
-        <div class="card">
+        <div class="card cat-sistemas" data-id="egestor-aps">
+          <button class="favorite-btn" type="button" aria-label="Favoritar e-Gestor APS" onclick="alternarFavorito(event, 'egestor-aps', this)">☆</button>
           <div class="thumb">
             <img src="imagens/egestor-aps.png" alt="Prévia do sistema e-Gestor APS" loading="lazy" onerror="handleImgError(this)">
           </div>
           <div class="card-title">
-            <h3>e-Gestor APS</h3>
+            <h3><span class="cat-icon">🔗</span>e-Gestor APS</h3>
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           <p class="desc">Sistema oficial de gestão da Atenção Primária à Saúde do Ministério da Saúde.</p>
           <a class="acessar" href="https://egestoraps.saude.gov.br/" target="_blank" rel="noopener"
-             onclick="rastrearClique('e-Gestor APS', 'Link útil', 'https://egestoraps.saude.gov.br/')">Acessar sistema</a>
+             onclick="rastrearClique('e-Gestor APS', 'Link útil', 'https://egestoraps.saude.gov.br/')">Abrir →</a>
         </div>
 
-        <div class="card">
+        <div class="card cat-sistemas" data-id="investsus-paineis">
+          <button class="favorite-btn" type="button" aria-label="Favoritar InvestSUS Painéis" onclick="alternarFavorito(event, 'investsus-paineis', this)">☆</button>
           <div class="thumb">
             <img src="imagens/investsus-paineis.png" alt="Prévia do painel InvestSUS Painéis" loading="lazy" onerror="handleImgError(this)">
           </div>
           <div class="card-title">
-            <h3>InvestSUS Painéis</h3>
+            <h3><span class="cat-icon">🔗</span>InvestSUS Painéis</h3>
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           <p class="desc">Evolução mais recente dos municípios nos últimos 12 meses, com dados sobre equipes, cobertura, suspensões e financiamento da APS.</p>
           <a class="acessar" href="https://investsuspaineis.saude.gov.br/extensions/CGIN_InvestsusPaineis/CGIN_InvestsusPaineis.html" target="_blank" rel="noopener"
-             onclick="rastrearClique('InvestSUS Painéis', 'Link útil', 'https://investsuspaineis.saude.gov.br/extensions/CGIN_InvestsusPaineis/CGIN_InvestsusPaineis.html')">Acessar painel</a>
+             onclick="rastrearClique('InvestSUS Painéis', 'Link útil', 'https://investsuspaineis.saude.gov.br/extensions/CGIN_InvestsusPaineis/CGIN_InvestsusPaineis.html')">Abrir →</a>
         </div>
 
-        <div class="card">
+        <div class="card cat-sistemas" data-id="siaps">
+          <button class="favorite-btn" type="button" aria-label="Favoritar SIAPS" onclick="alternarFavorito(event, 'siaps', this)">☆</button>
           <div class="thumb">
             <img src="imagens/siaps.png" alt="Prévia do sistema SIAPS" loading="lazy" onerror="handleImgError(this)">
           </div>
           <div class="card-title">
-            <h3>SIAPS</h3>
+            <h3><span class="cat-icon">🔗</span>SIAPS</h3>
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           <p class="desc">O SIAPS (Sistema de Informação para a Atenção Primária à Saúde) é a plataforma oficial do Ministério da Saúde para monitoramento e gestão da Atenção Primária no SUS.</p>
           <a class="acessar" href="https://siaps.saude.gov.br/publico" target="_blank" rel="noopener"
-             onclick="rastrearClique('SIAPS', 'Link útil', 'https://siaps.saude.gov.br/publico')">Acessar sistema</a>
+             onclick="rastrearClique('SIAPS', 'Link útil', 'https://siaps.saude.gov.br/publico')">Abrir →</a>
         </div>
       </div>
     </section>
+
+    <p class="empty-state" id="estadoVazio">Nenhum painel encontrado para esta busca.</p>
   </main>
 
   <footer>
     SAPS 2026
   </footer>
+
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal-painel" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+      <div class="modal-header">
+        <h3 id="modalTitulo">Painel</h3>
+        <div class="modal-actions">
+          <a id="modalNovaAba" class="modal-link" href="#" target="_blank" rel="noopener">Abrir em nova aba ↗</a>
+          <button type="button" class="modal-close" aria-label="Fechar" onclick="fecharModal()">✕</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-loading" id="modalLoading">Carregando painel…</div>
+        <iframe id="modalIframe" title="Painel"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var FAVORITOS_KEY = 'aps_favoritos';
+
+    function getFavoritos() {
+      try {
+        return JSON.parse(localStorage.getItem(FAVORITOS_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function alternarFavorito(event, id, btn) {
+      event.preventDefault();
+      event.stopPropagation();
+      var favoritos = getFavoritos();
+      var idx = favoritos.indexOf(id);
+      if (idx === -1) {
+        favoritos.push(id);
+        btn.classList.add('ativo');
+        btn.textContent = '★';
+      } else {
+        favoritos.splice(idx, 1);
+        btn.classList.remove('ativo');
+        btn.textContent = '☆';
+      }
+      localStorage.setItem(FAVORITOS_KEY, JSON.stringify(favoritos));
+      aplicarFiltros();
+    }
+
+    function alternarFavoritosToggle() {
+      var btn = document.getElementById('favoritosToggle');
+      btn.classList.toggle('ativo');
+      btn.textContent = btn.classList.contains('ativo') ? '★ Somente favoritos' : '☆ Somente favoritos';
+      aplicarFiltros();
+    }
+
+    function aplicarFiltros() {
+      var query = document.getElementById('busca').value.trim().toLowerCase();
+      var somenteFavoritos = document.getElementById('favoritosToggle').classList.contains('ativo');
+      var favoritos = getFavoritos();
+      var totalVisivel = 0;
+
+      document.querySelectorAll('.card').forEach(function (card) {
+        var texto = card.textContent.toLowerCase();
+        var combinaBusca = !query || texto.indexOf(query) !== -1;
+        var combinaFavorito = !somenteFavoritos || favoritos.indexOf(card.dataset.id) !== -1;
+        var visivel = combinaBusca && combinaFavorito;
+        card.style.display = visivel ? '' : 'none';
+        if (visivel) totalVisivel++;
+      });
+
+      document.querySelectorAll('.subgrupo').forEach(function (sub) {
+        var algumVisivel = Array.prototype.some.call(sub.querySelectorAll('.card'), function (c) {
+          return c.style.display !== 'none';
+        });
+        sub.style.display = algumVisivel ? '' : 'none';
+      });
+
+      document.querySelectorAll('section.grupo').forEach(function (sec) {
+        var algumVisivel = Array.prototype.some.call(sec.querySelectorAll('.card'), function (c) {
+          return c.style.display !== 'none';
+        });
+        sec.style.display = algumVisivel ? '' : 'none';
+      });
+
+      document.getElementById('estadoVazio').style.display = totalVisivel === 0 ? 'block' : 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var favoritos = getFavoritos();
+      document.querySelectorAll('.card').forEach(function (card) {
+        if (favoritos.indexOf(card.dataset.id) !== -1) {
+          var btn = card.querySelector('.favorite-btn');
+          btn.classList.add('ativo');
+          btn.textContent = '★';
+        }
+      });
+    });
+
+    function abrirPainel(event, link, nome, categoria) {
+      rastrearClique(nome, categoria, link.href);
+      var embedUrl = link.dataset.embed;
+      if (!embedUrl) {
+        return true;
+      }
+      event.preventDefault();
+      abrirModal(embedUrl, link.href, nome);
+      return false;
+    }
+
+    function abrirModal(embedUrl, novaAbaUrl, titulo) {
+      var overlay = document.getElementById('modalOverlay');
+      var iframe = document.getElementById('modalIframe');
+      var loading = document.getElementById('modalLoading');
+      document.getElementById('modalTitulo').textContent = titulo;
+      document.getElementById('modalNovaAba').href = novaAbaUrl;
+      loading.style.display = 'flex';
+      iframe.style.opacity = '0';
+      iframe.src = embedUrl;
+      overlay.classList.add('aberto');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharModal() {
+      var overlay = document.getElementById('modalOverlay');
+      overlay.classList.remove('aberto');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      document.getElementById('modalIframe').src = 'about:blank';
+    }
+
+    document.getElementById('modalIframe').addEventListener('load', function () {
+      document.getElementById('modalLoading').style.display = 'none';
+      this.style.opacity = '1';
+    });
+
+    document.getElementById('modalOverlay').addEventListener('click', function (event) {
+      if (event.target === this) fecharModal();
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') fecharModal();
+    });
+  </script>
 </body>
 </html>
