@@ -139,6 +139,7 @@
     .card.cat-financiamento { border-top-color: #d9822b; }
     .card.cat-censo-ubs { border-top-color: #7c4dd9; }
     .card.cat-combos-ubs { border-top-color: #0aa3b5; }
+    .card.cat-cobertura-aps { border-top-color: #2e8b57; }
     .card.cat-sistemas { border-top-color: #005baa; }
     .cat-icon {
       margin-right: 6px;
@@ -595,6 +596,25 @@
             <p class="desc">Distribuição dos equipamentos por município, ampliando a transparência da ação e apoiando o acompanhamento da entrega dos combos para UBS.</p>
             <a class="acessar" href="https://app.powerbi.com/groups/me/reports/15cef623-63dc-4a27-a26b-6ae2991eaf70/eb15333dd8d9040b1ce8?ctid=7673b0fd-2c63-4ac7-9d35-a71abe702c9b&amp;experience=power-bi" target="_blank" rel="noopener"
                onclick="rastrearClique('Painel de Monitoramento de Entregas dos Combos AgSUS', 'Interno', 'powerbi_agsus')">Abrir →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="subgrupo">
+        <h3 class="subgrupo-titulo">Cobertura da APS</h3>
+        <div class="cards">
+          <div class="card cat-cobertura-aps" data-id="cobertura-aps">
+            <button class="favorite-btn" type="button" aria-label="Favoritar Cobertura da APS" onclick="alternarFavorito(event, 'cobertura-aps', this)">☆</button>
+            <div class="thumb">
+              <img src="imagens/cobertura.png" alt="Prévia do painel Cobertura da APS" loading="lazy" onerror="handleImgError(this)">
+            </div>
+            <div class="card-title">
+              <h3><span class="cat-icon">📈</span>Cobertura da APS</h3>
+              <span class="badge interno"><span class="dot"></span>Interno</span>
+            </div>
+            <p class="desc">Acompanhe a cobertura da Estratégia Saúde da Família e Saúde Bucal</p>
+            <a class="acessar" href="https://app.powerbi.com/view?r=eyJrIjoiMTMyMzFkOGYtOWU4ZC00NjM2LTk3NDUtZGRlZjRmMDU4MzU0IiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
+               onclick="rastrearClique('Cobertura da APS', 'Interno', 'powerbi_cobertura_aps')">Abrir →</a>
           </div>
         </div>
       </div>
