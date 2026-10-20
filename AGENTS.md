@@ -17,6 +17,7 @@ Por instrução expressa do usuário em 20/10/2026, publique automaticamente no 
 - Imagens: `Panorama_APS/imagens/`, publicadas em `imagens/` com os mesmos nomes e capitalização.
 - `Panorama_APS/index.html` é outro painel; não o use como fonte da landing page.
 - Site: https://saps-atentimentos.onrender.com/
+- Use o endereço do Render para acesso e conferência da versão pública. Confira a implantação antes de afirmar que as mudanças estão no ar; o envio ao GitHub confirma a atualização do repositório.
 - O script existente `Panorama_APS/publicar_landing.py` usa uma lista fixa de imagens. Confira os arquivos necessários a cada atualização; não presuma que executar esse script publica todos os recursos.
 
 Consulte `README.md` para o fluxo de manutenção.
