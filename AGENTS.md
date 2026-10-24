@@ -21,3 +21,11 @@ Por instrução expressa do usuário em 20/10/2026, publique automaticamente no 
 - O script existente `Panorama_APS/publicar_landing.py` usa uma lista fixa de imagens. Confira os arquivos necessários a cada atualização; não presuma que executar esse script publica todos os recursos.
 
 Consulte `README.md` para o fluxo de manutenção.
+
+## Identidade visual compartilhada — 24/10/2026
+
+- Manter o padrão aprovado do painel de notas técnicas: branco/azul, degradês e sombras discretos, menu lateral recolhível, campos e ações de filtros com altura efetiva de 48 px e sem encolhimento por flex.
+- A fonte principal carrega `visual_saps.css/js` e `privacidade.css/js`; publicar as quatro dependências antes do HTML. O publicador descobre recursos e confere hashes; não usar a antiga lista fixa de imagens como referência.
+- Preservar os IDs/links/descrições/imagens dos cartões e a chave existente de favoritos `aps_favoritos`.
+- Google Analytics não deve carregar antes da escolha ou após recusa; não enviar pings de consentimento negado. Revogação bloqueia coleta futura e recarrega a página. Preferência separada por origem e chave `saps.landing.privacidade.v1`.
+- Validação funcional e visual: `validacao/conferir_landing.cjs`. Repetir no Render após publicar; GitHub atualizado não comprova que o deploy está no ar.
