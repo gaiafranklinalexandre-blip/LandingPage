@@ -2,6 +2,8 @@
 
 ## Identidade visual — 24/10/2026
 
+Após avaliação do usuário, removidos os três KPIs de contagem (painéis, categorias e favoritos). Mantidos busca, filtros e favoritos; a indicação de resultados continua junto à lista.
+
 Publicação concluída e validada no Render em 24/10/2026. HTML e quatro dependências públicos comparados por hash aos arquivos locais; favicon comparado por dimensões e pixels RGBA, pois a representação PNG retornada difere em bytes, mas tem pixels idênticos. Teste completo repetido no site público. Evidências em `validacao/publicacao_visual.json`. O favicon deste projeto também foi aplicado ao painel de notas técnicas, conforme solicitação do usuário.
 
 Aplicado o padrão aprovado do painel de notas técnicas: cabeçalho branco, azuis #1351b4/#071d41, sombras suaves e degradês, navegação lateral recolhível por categorias/temas, controles de busca de 48 px, cartões com textos legíveis e ações alinhadas. Os 13 cartões, links, descrições e imagens existentes foram preservados, assim como favoritos e a abertura já existente em modal. Busca sem resultados e Limpar seleções integrados às categorias.
