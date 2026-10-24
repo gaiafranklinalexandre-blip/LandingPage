@@ -2,9 +2,11 @@
 
 ## Identidade visual — 24/10/2026
 
+Publicação concluída e validada no Render em 24/10/2026. HTML, quatro dependências e favicon públicos comparados por hash aos arquivos locais; teste completo repetido no site público. Evidências em `validacao/publicacao_visual.json`. O favicon deste projeto também foi aplicado ao painel de notas técnicas, conforme solicitação do usuário.
+
 Aplicado o padrão aprovado do painel de notas técnicas: cabeçalho branco, azuis #1351b4/#071d41, sombras suaves e degradês, navegação lateral recolhível por categorias/temas, controles de busca de 48 px, cartões com textos legíveis e ações alinhadas. Os 13 cartões, links, descrições e imagens existentes foram preservados, assim como favoritos e a abertura já existente em modal. Busca sem resultados e Limpar seleções integrados às categorias.
 
-Fonte principal permanece `Panorama_APS/landing_apoiadores_saps.html`. Novas dependências publicadas junto dela: `visual_saps.css`, `visual_saps.js`, `privacidade.css`, `privacidade.js`. `cabecalho_saps.html` conserva a estrutura editável incorporada ao HTML. Privacidade: Google Analytics somente após aceite opcional, recusa sem tag/pings Google, preferência em `saps.landing.privacidade.v1`, reabertura pelo rodapé e revogação com recarga. Favoritos continuam em `aps_favoritos`.
+Fonte principal permanece `Panorama_APS/landing_apoiadores_saps.html`. Novas dependências publicadas junto dela: `visual_saps.css`, `visual_saps.js`, `privacidade.css`, `privacidade.js`. `cabecalho_saps.html` é uma cópia de referência da estrutura inicial; alterações do cabeçalho devem ser feitas no HTML principal. Privacidade: Google Analytics somente após aceite opcional, recusa sem tag/pings Google, preferência em `saps.landing.privacidade.v1`, reabertura pelo rodapé e revogação com recarga. Favoritos continuam em `aps_favoritos`.
 
 `publicar_landing.py` agora descobre os recursos locais referenciados no HTML, valida caminhos/existência, publica dependências antes do índice e compara hashes. Arquivos sem alteração não são reenviados. Documentação e script acompanham a publicação; credenciais nunca são incluídas. O endereço de saída foi corrigido para o Render.
 
