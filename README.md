@@ -2,6 +2,8 @@
 
 ## Identidade visual — 24/10/2026
 
+Logo SUS padronizado por solicitação do usuário com `APS 360/LadingPage_Notas/sus-logo.png`. Cópias integrais em imagens/logo_sus.png e imagens/icon.png; cabeçalho e favicon com parâmetro de versão atualizado. Proporção preservada e dimensões conferidas em 320, 390, 768 e 1440 px. Arquivo padrão também aplicado ao painel de notas e ao frontend de credenciamentos.
+
 Após avaliação do usuário, removidos os três KPIs de contagem (painéis, categorias e favoritos). Mantidos busca, filtros e favoritos; a indicação de resultados continua junto à lista.
 
 Publicação concluída e validada no Render em 24/10/2026. HTML e quatro dependências públicos comparados por hash aos arquivos locais; favicon comparado por dimensões e pixels RGBA, pois a representação PNG retornada difere em bytes, mas tem pixels idênticos. Teste completo repetido no site público. Evidências em `validacao/publicacao_visual.json`. O favicon deste projeto também foi aplicado ao painel de notas técnicas, conforme solicitação do usuário.
