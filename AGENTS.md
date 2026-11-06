@@ -33,7 +33,7 @@ Consulte `README.md` para o fluxo de manutenção.
 
 ## Totems para Eventos — 06/11/2026
 
-- Categoria Eventos e card Totems apontam para `eventos/totems/index.html`.
+- Card Totems classificado como Interno, mantido na categoria Eventos e no filtro de painéis internos. Categoria Eventos e card Totems apontam para `eventos/totems/index.html`.
 - Página especial com visualização online e download direto dos HTMLs, sem ZIP. Ambos funcionam offline; destinos dos QR codes exigem internet.
 - Fontes de entrega: `APS 360/TOTEM/COMBO/index.html` e `APS 360/TOTEM/EQUIDADE/index.html`. Não editar as cópias publicáveis nem enviar fontes, bases ou referências avulsas.
 - Em toda atualização solicitada dos totens, gerar os HTMLs no projeto de origem e publicar também na landing page. O publicador exige `--totem-source "CAMINHO/PARA/APS 360/TOTEM"` e sincroniza as duas entregas antes do envio, com hashes em `eventos/totems/manifesto.json`.
