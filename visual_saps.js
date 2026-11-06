@@ -2,9 +2,9 @@ var filtroCategoria='todos';
 function combinaCategoria(card){
  const c=filtroCategoria;
  if(c==='todos')return true;
- if(c==='publico')return card.classList.contains('cat-publico')||card.classList.contains('cat-eventos');
+ if(c==='publico')return card.classList.contains('cat-publico');
  if(c==='sistemas')return card.classList.contains('cat-sistemas');
- if(c==='interno')return !card.classList.contains('cat-eventos')&&!card.classList.contains('cat-publico')&&!card.classList.contains('cat-sistemas');
+ if(c==='interno')return !card.classList.contains('cat-publico')&&!card.classList.contains('cat-sistemas');
  return card.classList.contains('cat-'+c);
 }
 (()=>{
