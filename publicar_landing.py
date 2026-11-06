@@ -5,6 +5,7 @@ novas da pasta imagens/ no repositorio GitHub LandingPage.
 Uso: python publicar_landing.py
 """
 
+import argparse
 import base64
 import hashlib
 import json
@@ -90,7 +91,9 @@ def enviar_arquivo(token, caminho_local, caminho_remoto, mensagem):
         raise RuntimeError(f'Erro ao publicar {caminho_remoto}: HTTP {e.code}') from None
 
 
-def publicar(token):
+def publicar(token, totem_source):
+    from preparar_totems import preparar
+    preparar(totem_source)
     print(f"Conectando ao GitHub ({REPO})...")
 
     html = (PASTA / ARQUIVO_LOCAL).read_text(encoding='utf-8')
@@ -100,17 +103,23 @@ def publicar(token):
         if url.scheme or url.netloc or not url.path:
             continue
         relativo = url.path
+        if relativo == 'eventos/totems/index.html':
+            continue
         recurso = (PASTA / relativo).resolve()
         if not recurso.is_relative_to(PASTA.resolve()) or recurso.suffix.lower() not in ('.png','.jpg','.jpeg','.webp','.svg','.css','.js'):
             raise RuntimeError('Referência local não permitida: ' + relativo)
         if not recurso.is_file():
             raise FileNotFoundError('Recurso obrigatório ausente: ' + relativo)
         recursos.add(relativo)
+    # Lista explícita: não enviar fontes municipais, referências ou arquivos privados.
+    for nome in ('index.html', 'totems.css', 'combo.html', 'equidade.html', 'manifesto.json'):
+        recursos.add('eventos/totems/' + nome)
     # Recursos antes do HTML; comparação de hashes evita reenvios desnecessários.
     for relativo in sorted(recursos):
         enviar_arquivo(token, PASTA / relativo, relativo, 'Atualiza recurso visual SAPS: ' + relativo)
     for documento in ('AGENTS.md', 'README.md'):
         enviar_arquivo(token, PASTA.parent / documento, documento, 'Documenta identidade visual e publicação SAPS')
+    enviar_arquivo(token, PASTA / 'preparar_totems.py', 'preparar_totems.py', 'Sincroniza entregas standalone dos totens')
     enviar_arquivo(token, Path(__file__), 'publicar_landing.py', 'Valida recursos e publicação no Render')
     enviar_arquivo(token, PASTA / ARQUIVO_LOCAL, ARQUIVO_REMOTO, 'Aplica identidade visual APS: navegação, cartões e privacidade')
 
@@ -121,4 +130,7 @@ def publicar(token):
 
 
 if __name__ == "__main__":
-    publicar(carregar_token())
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--totem-source', required=True, type=Path, help='Pasta TOTEM com COMBO/index.html e EQUIDADE/index.html atuais')
+    args = parser.parse_args()
+    publicar(carregar_token(), args.totem_source)
