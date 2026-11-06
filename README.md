@@ -69,3 +69,12 @@ O script antigo ainda imprime um endereço do GitHub Pages ao terminar. Para ace
 - O teste antigo `tests/visual_aps.cjs` foi interrompido por incompatibilidade com a navegacao alterada simultaneamente. Nao registrar essa tentativa como aprovada. Nesta sessao, a ultima correcao publicada limita-se ao favicon.
 - Pendencias: eventual revisao funcional das alteracoes concorrentes deve seguir o teste e a documentacao vigentes; recebimento real de eventos no GA4 nao foi revalidado neste encerramento.
 
+
+
+## Totems para Eventos — 06/11/2026
+
+- Categoria Eventos e card Totems apontam para `eventos/totems/index.html`.
+- Página especial com visualização online e download direto dos HTMLs, sem ZIP. Ambos funcionam offline; destinos dos QR codes exigem internet.
+- Fontes de entrega: `APS 360/TOTEM/COMBO/index.html` e `APS 360/TOTEM/EQUIDADE/index.html`. Não editar as cópias publicáveis nem enviar fontes, bases ou referências avulsas.
+- Em toda atualização solicitada dos totens, gerar os HTMLs no projeto de origem e publicar também na landing page. O publicador exige `--totem-source "CAMINHO/PARA/APS 360/TOTEM"` e sincroniza as duas entregas antes do envio, com hashes em `eventos/totems/manifesto.json`.
+- Comando na pasta Panorama_APS: `python publicar_landing.py --totem-source "CAMINHO/PARA/APS 360/TOTEM"`. Conferir o deploy no Render, visualização e download dos dois arquivos.
