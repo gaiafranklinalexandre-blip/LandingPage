@@ -83,3 +83,8 @@ O script antigo ainda imprime um endereço do GitHub Pages ao terminar. Para ace
 ## Totems: condução da experiência — 08/11/2026
 
 Entregas atualizadas a partir dos fontes do projeto TOTEM. Combo: instruções por estado e avanço Próxima pergunta/Ver meu resultado na faixa inferior. Equidade: revelação e avanço guiado pelas três abas, orientações persistentes, chamadas de toque nos caminhos e confirmação explícita no desafio. Downloads continuam sendo HTMLs autossuficientes, sem ZIP. O card segue Interno, na categoria Eventos. Os geradores, fontes e regressões pertencem ao projeto TOTEM; publicar somente os HTMLs de entrega e o manifesto pelo fluxo existente.
+
+
+## Equidade: folders temáticos — 08/11/2026
+
+Conteúdos quilombola e povos das águas revisados a partir dos folders fornecidos no projeto TOTEM. eSFR e UBSF permanecem juntas no mesmo card, sem seletor, com descrições e custeios próprios. Abertura: “Se não há estradas, vamos de barco!”. Componentes, valores unitários e limites por faixa/território detalhados em páginas próprias. Publicar a entrega atual de Equidade e o manifesto; download permanece um único HTML autossuficiente.
