@@ -2,13 +2,13 @@
   {
     "jogo": "Jogo do Combo de Equipamentos para UBS",
     "arquivo": "combo.html",
-    "bytes": 3872885,
-    "sha256": "aed2c1a2d6bea2b46275bad0e5b08c30ae55a664f749d621a42099907ef46bfa"
+    "bytes": 3874249,
+    "sha256": "53eff2adce2d5fc5b5f49e668fd39eb0255437b05de7958ad6efd1b8a1c8f2f3"
   },
   {
     "jogo": "Totem Caminhos da Equidade",
     "arquivo": "equidade.html",
-    "bytes": 10185748,
-    "sha256": "9099e107eae066330620c4224a79709961fe72f9797480207c4f85677317ddb5"
+    "bytes": 10188185,
+    "sha256": "5096827f5d33f538e5096ead8c721cc22cbb3b4e647a2ea60ab45849036c7700"
   }
 ]
