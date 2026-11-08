@@ -132,6 +132,7 @@ button.flow-stop:not(.active):hover{background:#e8f0e3;border-radius:13px}
 }
 @media(prefers-reduced-motion:reduce){.guided-action:not(:disabled),.guided-action:not(:disabled)>svg:last-child,.interaction-guide i{animation:none}.guided-action:not(:disabled){box-shadow:0 0 0 5px #8fc96645,0 6px 20px #07573f20}}
 
+
 /* Consulta para gestores: modalidade e valores permanecem associados. */
 .finance-access{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;margin-top:22px;padding:21px;border:1px solid #c4d8c4;border-radius:17px;background:#f1f6eb}
 .finance-access>div{min-width:0;flex:1}.finance-access .eyebrow{font-size:13px;letter-spacing:.08em;margin-bottom:10px}.finance-access>div>p:last-child{font-size:18px;line-height:1.5;color:#334f41}
@@ -269,6 +270,27 @@ button.flow-stop:not(.active):hover{background:#e8f0e3;border-radius:13px}
 @media(orientation:portrait) and (min-width:700px){.territory-atlas{height:600px;--atlas-preferred-size:175px}}
 @media(orientation:landscape) and (max-height:820px) and (min-width:1000px){.territory-atlas{--atlas-preferred-size:145px}}
 @media(max-width:699px){.territory-atlas{height:300px;--atlas-preferred-size:88px}}
+
+/* Instruções permanecem visíveis e distinguem exploração de avanço. */
+.profile-screen .section-heading .lead,.hub-screen .section-heading .lead{font-weight:700;color:#245e45;font-size:clamp(15px,1.15vw,22px)}
+.profile-screen #page-next{max-width:58%;white-space:normal;text-align:left;line-height:1.35}
+.strategy-card .card-cta{display:flex;align-items:center;justify-content:space-between;background:var(--tint);border:1px solid currentColor;border-radius:8px;padding:9px 12px;margin-top:9px;min-height:44px}
+.strategy-card .explored-mark{width:auto;gap:5px;padding:6px 9px;font-size:12px;border-radius:9px}
+.hub-actions .hub-progress{font-size:clamp(12px,1vw,17px);line-height:1.4}
+@media(max-width:699px){.strategy-card .card-cta{font-size:10px;padding:7px;min-height:36px}.strategy-card .explored-mark{font-size:9px;padding:4px 6px}.profile-screen #page-next{max-width:65%;font-size:12px}.profile-screen .section-heading .lead,.hub-screen .section-heading .lead{font-size:13px}.hub-actions .hub-progress{font-size:10px}}
+
+@media(min-width:700px){.hub-actions>.primary,.profile-screen #page-next{font-size:18px;min-height:58px}}
+
+@media(orientation:landscape) and (max-height:820px) and (min-width:1000px){
+ .hub-screen .section-heading h1{font-size:34px}
+ .hub-screen .section-heading{margin-bottom:16px}
+ .hub-screen .strategy-photo{height:85px}
+ .hub-screen .strategy-card-copy{padding:12px 16px}
+ .hub-screen .strategy-grid{gap:12px}
+ .hub-screen .page-actions{margin-top:14px;padding-top:12px}
+}
+
+@media(orientation:landscape) and (max-height:820px) and (min-width:1000px){.hub-screen .hub-actions>.primary{font-size:20px;min-height:62px}}
 </style>
 </head>
 <body data-screen="idle">
@@ -737,7 +759,7 @@ function municipalResults(){
  const list=matches.slice(0,keyboard.isOpen()?3:5);
  $('municipal-dropdown').hidden=!active;$('municipality-search').setAttribute('aria-expanded',String(!!active));
  $('municipal-results').innerHTML=list.length?list.map(m=>`<button type="button" class="muni-option" role="option" aria-selected="false" data-ibge="${esc(m.ibge)}"><span>${icon('pin')}</span><strong>${esc(m.municipio)}</strong><small>${esc(m.uf)}</small>${icon('arrow')}</button>`).join(''):active?'<p class="empty">Nenhum município encontrado. Confira o nome ou a UF.</p>':'';
- $('matches-count').textContent=active?`${fmt(matches.length)} ${matches.length===1?'município encontrado':'municípios encontrados'}${matches.length>list.length?' · continue digitando para refinar':''}`:S.municipality?'Município selecionado. Vamos conhecer o território.':'Comece a digitar ou filtre pela UF.';
+ $('matches-count').textContent=active?`${fmt(matches.length)} ${matches.length===1?'município encontrado':'municípios encontrados'}${matches.length>list.length?' · continue digitando para refinar':''} · toque no município da lista`:S.municipality?`${S.municipality.municipio}/${S.municipality.uf} selecionado. Toque em Conhecer meu território.`:'Comece a digitar ou filtre pela UF.';
  $('selected-place').hidden=!S.municipality;$('selected-place').textContent=S.municipality?`✓ ${S.municipality.municipio}/${S.municipality.uf}`:'';$('select-municipality').disabled=!S.municipality;
  document.querySelectorAll('[data-ibge]').forEach(b=>{b.addEventListener('pointerdown',e=>e.preventDefault());b.addEventListener('click',()=>{S.municipality=MUNICIPAL.find(m=>m.ibge===b.dataset.ibge);S.profileRevealed=false;S.query=S.municipality.municipio;$('municipality-search').value=S.query;keyboard.close();municipalResults();});});scheduleFit();
 }
@@ -746,11 +768,11 @@ const profileGroups=[{title:'Território e rede de cuidado',fields:[['populacao'
 function profileView(animateReveal=false){
  const m=S.municipality,g=profileGroups[S.profilePage],revealed=S.profileRevealed;
  const value=field=>{const text=fmt(m[field]),parts=field==='zona_bioclimatica'&&typeof m[field]==='string'?text.match(/^(\S+)\s+(.+)$/):null;return parts?`<span class="climate-code">${esc(parts[1])}</span> <span class="climate-description">${esc(parts[2])}</span>`:esc(text);};
- $('main').innerHTML=`<section class="screen profile-screen">${sectionHead('UM MUNICÍPIO, DIFERENTES NECESSIDADES',`${esc(m.municipio)} <span class="heading-uf">/ ${esc(m.uf)}</span>`,ORIGINAL_UI.profile.instruction)}<div class="profile-tabs" role="group" aria-label="Grupos de dados">${profileGroups.map((g,i)=>`<button class="tab ${i===S.profilePage?'selected':''}" data-profile-page="${i}" aria-pressed="${i===S.profilePage}"><b>${i+1}</b>${esc(g.title)}</button>`).join('')}</div><div class="profile-grid ${S.profilePage===0?'has-climate':''} ${animateReveal?'is-opening':''} ${revealed?'data-discovered':''}">${g.fields.map(([field,label,unit,ic],i)=>`<${revealed?'article':'button type="button"'} class="profile-card ${field==='zona_bioclimatica'?'climate-card':''} ${revealed?'revealed':''}" data-field="${field}" ${revealed?'':'data-reveal-group aria-expanded="false"'} style="--reveal-delay:${i*75}ms"><span class="card-icon">${icon(ic)}</span><span class="stat-label">${esc(label)}</span><strong class="stat-value ${revealed&&typeof m[field]!=='number'?'is-text':''}">${revealed?value(field):'?'}</strong><span class="stat-unit">${esc(revealed?unit:ORIGINAL_UI.profile.instruction)}</span></${revealed?'article':'button'}>`).join('')}</div>${actions('Trocar município',null,'Entender a equidade')}</section>`;
- const prompt=document.querySelector('.profile-screen .section-heading .lead');prompt.style.visibility=revealed?'hidden':'visible';prompt.setAttribute('aria-hidden',String(revealed));
+ $('main').innerHTML=`<section class="screen profile-screen">${sectionHead('UM MUNICÍPIO, DIFERENTES NECESSIDADES',`${esc(m.municipio)} <span class="heading-uf">/ ${esc(m.uf)}</span>`,revealed?(S.profilePage<2?'Dados revelados. Toque no botão abaixo para explorar o próximo grupo.':'Dados revelados. Toque em Entender a equidade para continuar.'):'Toque em qualquer card para revelar os dados desta aba.')}<div class="profile-tabs" role="group" aria-label="Grupos de dados">${profileGroups.map((g,i)=>`<button class="tab ${i===S.profilePage?'selected':''}" data-profile-page="${i}" aria-pressed="${i===S.profilePage}"><b>${i+1}</b>${esc(g.title)}</button>`).join('')}</div><div class="profile-grid ${S.profilePage===0?'has-climate':''} ${animateReveal?'is-opening':''} ${revealed?'data-discovered':''}">${g.fields.map(([field,label,unit,ic],i)=>`<${revealed?'article':'button type="button"'} class="profile-card ${field==='zona_bioclimatica'?'climate-card':''} ${revealed?'revealed':''}" data-field="${field}" ${revealed?'':'data-reveal-group aria-expanded="false"'} style="--reveal-delay:${i*75}ms"><span class="card-icon">${icon(ic)}</span><span class="stat-label">${esc(label)}</span><strong class="stat-value ${revealed&&typeof m[field]!=='number'?'is-text':''}">${revealed?value(field):'?'}</strong><span class="stat-unit">${esc(revealed?unit:'Toque para revelar os dados')}</span></${revealed?'article':'button'}>`).join('')}</div>${actions('Trocar município',null,!revealed?'Revelar dados desta aba':S.profilePage===0?'Ver pessoas e condições de vida':S.profilePage===1?'Ver organização e proteção social':'Entender a equidade')}</section>`;
+
  document.querySelectorAll('[data-reveal-group]').forEach(b=>b.addEventListener('click',()=>{if(S.profileRevealed)return;S.profileRevealed=true;mark();profileView(true);scheduleFit();$('main').focus({preventScroll:true});}));
  document.querySelectorAll('[data-profile-page]').forEach(b=>b.addEventListener('click',()=>{const page=Number(b.dataset.profilePage);if(page===S.profilePage)return;S.profilePage=page;S.profileRevealed=false;profileView();scheduleFit();}));
- bind('page-back',()=>go('municipality'));bind('page-next',()=>go('concept',{concept:0}));
+ bind('page-back',()=>go('municipality'));bind('page-next',()=>{if(!S.profileRevealed){S.profileRevealed=true;mark();profileView(true);scheduleFit();}else if(S.profilePage<profileGroups.length-1){S.profilePage++;S.profileRevealed=false;mark();profileView();scheduleFit();}else go('concept',{concept:0});});
 }
 
 function equalityDiagram(){
@@ -758,7 +780,7 @@ function equalityDiagram(){
 }
 function conceptView(){
  let body;
- if(S.concept===0){body=`${sectionHead('CONCEITO 01 / 03','Equidade vai além<br>de <em>igualdade</em>','Reconhecer que as diferentes realidades exigem diferentes respostas.')}<div class="concept-grid"><div class="concept-explanation panel"><span class="card-icon">${icon('scale')}</span><h2>${S.equity?'Apoio conforme a necessidade':'Recursos iguais, realidades diferentes'}</h2><p>${S.equity?'A equidade adapta a resposta às necessidades de cada pessoa e território para reduzir barreiras de acesso.':'Oferecer o mesmo apoio a todas as pessoas pode manter as diferenças no acesso ao cuidado.'}</p><div class="segmented" role="group" aria-label="Comparar igualdade e equidade"><button class="${!S.equity?'selected':''}" id="show-equality" aria-pressed="${!S.equity}">Igualdade</button><button class="${S.equity?'selected':''}" id="show-equity" aria-pressed="${S.equity}">Equidade</button></div><small>Toque nas opções e compare os apoios.</small></div><div class="diagram-panel">${equalityDiagram()}</div></div>`;}
+ if(S.concept===0){body=`${sectionHead('CONCEITO 01 / 03','Equidade vai além<br>de <em>igualdade</em>','Reconhecer que as diferentes realidades exigem diferentes respostas.')}<div class="concept-grid"><div class="concept-explanation panel"><span class="card-icon">${icon('scale')}</span><h2>${S.equity?'Apoio conforme a necessidade':'Recursos iguais, realidades diferentes'}</h2><p>${S.equity?'A equidade adapta a resposta às necessidades de cada pessoa e território para reduzir barreiras de acesso.':'Oferecer o mesmo apoio a todas as pessoas pode manter as diferenças no acesso ao cuidado.'}</p><div class="segmented" role="group" aria-label="Comparar igualdade e equidade"><button class="${!S.equity?'selected':''}" id="show-equality" aria-pressed="${!S.equity}">Igualdade</button><button class="${S.equity?'selected':''}" id="show-equity" aria-pressed="${S.equity}">Equidade</button></div><small>Toque em Igualdade e Equidade para comparar os apoios.</small></div><div class="diagram-panel">${equalityDiagram()}</div></div>`;}
  else if(S.concept===1){const b=D.BARRIERS[S.barrier];body=`${sectionHead('CONCEITO 02 / 03','O que afasta as pessoas<br>do <em>cuidado?</em>','Iniquidades em saúde estão relacionadas a desigualdades injustas e evitáveis.')}<div class="barrier-layout"><div class="barrier-photo">${photo(A[b.photo],b.title)}<span>BARREIRAS DE ACESSO</span></div><div class="barrier-copy"><div class="choice-tabs">${D.BARRIERS.map((b,i)=>`<button class="tab ${i===S.barrier?'selected':''}" data-barrier="${i}" aria-pressed="${i===S.barrier}">${String(i+1).padStart(2,'0')} ${esc(b.title)}</button>`).join('')}</div><div class="barrier-description" aria-live="polite"><h2>${esc(b.title)}</h2><p>${esc(b.body)}</p></div></div></div>`;}
  else {const a=D.APS_WAYS[S.apsTab];body=`${sectionHead('CONCEITO 03 / 03','A APS organiza respostas<br>para cada <em>território</em>','Reconhecer necessidades, ampliar o acesso e direcionar recursos.')}<div class="aps-concept panel"><div class="choice-tabs">${D.APS_WAYS.map((a,i)=>`<button class="tab ${i===S.apsTab?'selected':''}" data-aps="${i}" aria-pressed="${i===S.apsTab}">${icon(['map','users','money'][i])}${esc(a.kicker)}</button>`).join('')}</div><div class="aps-concept-copy" aria-live="polite"><h2>${esc(a.front)}</h2><ul class="point-list">${a.practices.map(p=>`<li>${icon('check')}<span>${esc(p.t)}</span></li>`).join('')}</ul></div></div>`;}
  $('main').innerHTML=`<section class="screen concept-screen">${progressDots(['Equidade','Barreiras','Resposta da APS'],S.concept)}${body}${actions(S.concept===0?'Meu território':'Conceito anterior',null,['Conhecer as barreiras','Ver a resposta da APS','Explorar os caminhos'][S.concept])}</section>`;
@@ -771,7 +793,7 @@ function conceptView(){
 
 function hubView(){
  const pending=S.gameDeck.length&&S.gameIndex<6;
- $('main').innerHTML=`<section class="screen hub-screen">${sectionHead(ORIGINAL_UI.hub.kicker,esc(ORIGINAL_UI.hub.title))}<div class="strategy-grid">${T.map(t=>`<button class="strategy-card" data-explore="${t.id}" style="--accent:${t.color};--tint:${t.tint}"><div class="strategy-photo">${photo(t.photo,t.place)}<span class="strategy-number">${t.num}</span>${S.explored.includes(t.id)?`<span class="explored-mark">${icon('check')}</span>`:''}</div><div class="strategy-card-copy"><span>${esc(t.place)}</span><h2>${esc(t.short)}</h2><span class="card-cta">${esc(ORIGINAL_UI.hub.cardAction)} ${icon('arrow')}</span></div></button>`).join('')}</div><nav class="page-actions hub-actions"><button class="text-button" id="revisit-concepts">${icon('back')} ${esc(ORIGINAL_UI.hub.back)}</button><span class="hub-progress">${S.explored.length} de 6</span>${S.explored.length||S.matched.length?`<button class="text-button" id="go-reflection">${esc(ORIGINAL_UI.hub.summary)}</button>`:''}<button class="primary guided-action" id="play-game">${pending?'Retomar desafio':'Jogar o desafio'} ${icon('arrow')}</button></nav></section>`;
+ $('main').innerHTML=`<section class="screen hub-screen">${sectionHead(ORIGINAL_UI.hub.kicker,esc(ORIGINAL_UI.hub.title),'Toque em um caminho para conhecer a estratégia. Você também pode ir direto ao desafio.')}<div class="strategy-grid">${T.map(t=>`<button class="strategy-card" data-explore="${t.id}" style="--accent:${t.color};--tint:${t.tint}"><div class="strategy-photo">${photo(t.photo,t.place)}<span class="strategy-number">${t.num}</span>${S.explored.includes(t.id)?`<span class="explored-mark">${icon('check')} Explorado</span>`:''}</div><div class="strategy-card-copy"><span>${esc(t.place)}</span><h2>${esc(t.short)}</h2><span class="card-cta">Toque para conhecer ${icon('arrow')}</span></div></button>`).join('')}</div><nav class="page-actions hub-actions"><button class="text-button" id="revisit-concepts">${icon('back')} ${esc(ORIGINAL_UI.hub.back)}</button><span class="hub-progress">Você explorou ${S.explored.length} de 6 caminhos</span>${S.explored.length||S.matched.length?`<button class="text-button" id="go-reflection">${esc(ORIGINAL_UI.hub.summary)}</button>`:''}<button class="primary guided-action" id="play-game">${pending?'Retomar desafio':'Jogar o desafio'} ${icon('arrow')}</button></nav></section>`;
  document.querySelectorAll('[data-explore]').forEach(b=>b.addEventListener('click',()=>openModule(b.dataset.explore,'hub')));
  bind('revisit-concepts',()=>go('concept',{concept:2}));bind('play-game',()=>{if(!pending){S.gameDeck=shuffle(T.map(t=>t.id));S.teamOrder=shuffle(T.map(t=>t.id));S.gameIndex=0;S.matched=[];prepareGameRound();}go('game',{wrong:null});});bind('go-reflection',()=>go('finish',{reflection:0}));
 }
@@ -804,12 +826,12 @@ function gameView(){
 function confirmGameAnswer(t,correctId,animate=true){
  document.querySelectorAll('[data-team]').forEach(x=>{x.disabled=true;x.classList.remove('wrong');});
  const answer=document.querySelector(`[data-team="${correctId}"]`);answer.classList.add(animate?'correct-flash':'correct-held');
- $('game-clock').classList.add('answer-confirmed');$('game-feedback').textContent=t.strat;$('game-feedback').classList.remove('try-again');
+ $('game-clock').classList.add('answer-confirmed');$('game-feedback').textContent='Resposta correta! '+t.strat;$('game-feedback').classList.remove('try-again');
  document.querySelector('.match-progress').innerHTML=`${icon('check')} ${S.matched.length} de 6 associações`;
- if(S.gameIndex!==S.gameDeck.length-1)return;
+ if(S.gameIndex!==S.gameDeck.length-1){document.querySelector('.interaction-guide').textContent='Resposta correta! Próxima situação…';return;}
  $('clock-label').textContent='RODADA CONCLUÍDA';$('clock-readout').setAttribute('aria-label','Última rodada concluída');
  document.querySelector('.game-screen .interaction-guide').outerHTML=`<button class="primary guided-action" id="view-game-summary">Ver minha síntese ${icon('arrow')}</button>`;
- document.querySelector('.game-screen .source-caption').textContent='';
+ document.querySelector('.game-screen .source-caption').textContent='Desafio concluído. Toque em Ver minha síntese para continuar.';
  bind('view-game-summary',nextGame);scheduleFit();
 }
 function nextGame(){if(S.gameOutcome===null||S.gameIndex>=S.gameDeck.length)return;S.gameIndex++;prepareGameRound();go(S.gameIndex>=S.gameDeck.length?'finish':'game',{wrong:null,reflection:0});}
