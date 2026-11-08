@@ -78,3 +78,8 @@ O script antigo ainda imprime um endereço do GitHub Pages ao terminar. Para ace
 - Fontes de entrega: `APS 360/TOTEM/COMBO/index.html` e `APS 360/TOTEM/EQUIDADE/index.html`. Não editar as cópias publicáveis nem enviar fontes, bases ou referências avulsas.
 - Em toda atualização solicitada dos totens, gerar os HTMLs no projeto de origem e publicar também na landing page. O publicador exige `--totem-source "CAMINHO/PARA/APS 360/TOTEM"` e sincroniza as duas entregas antes do envio, com hashes em `eventos/totems/manifesto.json`.
 - Comando na pasta Panorama_APS: `python publicar_landing.py --totem-source "CAMINHO/PARA/APS 360/TOTEM"`. Conferir o deploy no Render, visualização e download dos dois arquivos.
+
+
+## Totems: condução da experiência — 08/11/2026
+
+Entregas atualizadas a partir dos fontes do projeto TOTEM. Combo: instruções por estado e avanço Próxima pergunta/Ver meu resultado na faixa inferior. Equidade: revelação e avanço guiado pelas três abas, orientações persistentes, chamadas de toque nos caminhos e confirmação explícita no desafio. Downloads continuam sendo HTMLs autossuficientes, sem ZIP. O card segue Interno, na categoria Eventos. Os geradores, fontes e regressões pertencem ao projeto TOTEM; publicar somente os HTMLs de entrega e o manifesto pelo fluxo existente.
