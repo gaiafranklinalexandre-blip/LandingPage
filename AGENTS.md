@@ -38,3 +38,8 @@ Consulte `README.md` para o fluxo de manutenção.
 - Fontes de entrega: `APS 360/TOTEM/COMBO/index.html` e `APS 360/TOTEM/EQUIDADE/index.html`. Não editar as cópias publicáveis nem enviar fontes, bases ou referências avulsas.
 - Em toda atualização solicitada dos totens, gerar os HTMLs no projeto de origem e publicar também na landing page. O publicador exige `--totem-source "CAMINHO/PARA/APS 360/TOTEM"` e sincroniza as duas entregas antes do envio, com hashes em `eventos/totems/manifesto.json`.
 - Comando na pasta Panorama_APS: `python publicar_landing.py --totem-source "CAMINHO/PARA/APS 360/TOTEM"`. Conferir o deploy no Render, visualização e download dos dois arquivos.
+
+
+## Textos da interface — 09/11/2026
+
+Não converter prompts, orientações internas ou justificativas de implementação em mensagens para o participante. Evitar frases genéricas de condução e textos que apenas repetem os botões, como “Explore no seu ritmo. Depois, siga para a próxima etapa.”. Conteúdo educativo, informação de estado necessária e rótulos de ação devem ser objetivos. As orientações de manutenção ficam na documentação. Regra detalhada também registrada em TOTEM/AGENTS.md, Codex.md e no README do Equidade. A correção remove essas mensagens da entrega online e do download.
