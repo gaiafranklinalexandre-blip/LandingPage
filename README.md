@@ -98,3 +98,8 @@ Conceitos atualizados para descoberta em poucos toques: uma ação revela o cont
 ## Equidade: componentes no monitor do totem — 09/11/2026
 
 Nos seis caminhos, organização do cuidado e financiamento ficam juntos na aba Componentes e valores, com todos os quadros simultâneos. Removidos os botões O que o incentivo inclui/Como atua e a paginação. A abertura apresenta a estratégia e os valores ficam concentrados nessa aba. Painéis conferidos para Full HD/4K horizontal e vertical; a entrega online e o download continuam sendo o mesmo HTML autossuficiente.
+
+
+## Textos da interface — 09/11/2026
+
+Não converter prompts, orientações internas ou justificativas de implementação em mensagens para o participante. Evitar frases genéricas de condução e textos que apenas repetem os botões, como “Explore no seu ritmo. Depois, siga para a próxima etapa.”. Conteúdo educativo, informação de estado necessária e rótulos de ação devem ser objetivos. As orientações de manutenção ficam na documentação. Regra detalhada também registrada em TOTEM/AGENTS.md, Codex.md e no README do Equidade. A correção remove essas mensagens da entrega online e do download.
