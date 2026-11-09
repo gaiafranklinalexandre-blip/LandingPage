@@ -88,3 +88,13 @@ Entregas atualizadas a partir dos fontes do projeto TOTEM. Combo: instruções p
 ## Equidade: folders temáticos — 08/11/2026
 
 Conteúdos quilombola e povos das águas revisados a partir dos folders fornecidos no projeto TOTEM. eSFR e UBSF permanecem juntas no mesmo card, sem seletor, com descrições e custeios próprios. Abertura: “Se não há estradas, vamos de barco!”. Componentes, valores unitários e limites por faixa/território detalhados em páginas próprias. Publicar a entrega atual de Equidade e o manifesto; download permanece um único HTML autossuficiente.
+
+
+## Equidade: navegação educativa — 09/11/2026
+
+Conceitos atualizados para descoberta em poucos toques: uma ação revela o conteúdo coletivo de cada tela e a seguinte avança. Sem abas ou sequência de cliques por item. Os conteúdos dos folders e demais estratégias permanecem preservados. A entrega online e o download usam o mesmo HTML standalone atualizado.
+
+
+## Equidade: componentes no monitor do totem — 09/11/2026
+
+Nos seis caminhos, organização do cuidado e financiamento ficam juntos na aba Componentes e valores, com todos os quadros simultâneos. Removidos os botões O que o incentivo inclui/Como atua e a paginação. A abertura apresenta a estratégia e os valores ficam concentrados nessa aba. Painéis conferidos para Full HD/4K horizontal e vertical; a entrega online e o download continuam sendo o mesmo HTML autossuficiente.
