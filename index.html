@@ -35,7 +35,7 @@
       padding: 0;
     }
     html {
-      scrollbar-color: #005baa #e2e8f0;
+      scrollbar-color: var(--painel-blue,#1351b4) #e2e8f0;
     }
     ::-webkit-scrollbar {
       width: 12px;
@@ -45,12 +45,12 @@
       background: #e2e8f0;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: #005baa;
+      background-color: var(--painel-blue,#1351b4);
       border-radius: 8px;
       border: 2px solid #e2e8f0;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background-color: #004a8f;
+      background-color: #0c326f;
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
@@ -62,7 +62,7 @@
       flex-direction: column;
     }
     header {
-      background: #005baa;
+      background: var(--painel-blue,#1351b4);
       color: #fff;
       padding: 20px 32px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -104,7 +104,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: #005baa;
+      color: var(--painel-blue,#1351b4);
       border-bottom: 1px solid #d7e0e9;
       padding-bottom: 10px;
       margin-bottom: 18px;
@@ -153,7 +153,7 @@
     .card.cat-combos-ubs { border-top-color: #0aa3b5; }
     .card.cat-cobertura-aps { border-top-color: #2e8b57; }
     .card.cat-infraestrutura { border-top-color: #b5533e; }
-    .card.cat-sistemas { border-top-color: #005baa; }
+    .card.cat-sistemas { border-top-color: var(--painel-blue,#1351b4); }
     .cat-icon {
       margin-right: 6px;
     }
@@ -267,7 +267,7 @@
     .card a.acessar {
       align-self: flex-start;
       margin-top: 4px;
-      background: #005baa;
+      background: var(--painel-blue,#1351b4);
       color: #fff;
       text-decoration: none;
       font-size: 0.82rem;
@@ -277,12 +277,18 @@
       transition: background 0.15s ease;
     }
     .card a.acessar:hover {
-      background: #00457a;
+      background: #0c326f;
     }
+    /* Rodapé padrão das nossas páginas: texto centralizado, cinza, sem fundo
+       (a antiga faixa de 6px esmagava o link de cookies do privacidade.js). */
     footer {
-      height: 6px;
       margin-top: 24px;
-      background: linear-gradient(90deg, #1351b4, #16856a);
+      padding: 25px 30px;
+      border: 0;
+      background: none;
+      text-align: center;
+      font-size: 12px;
+      color: #8190a4;
     }
     .busca-bar {
       background: #ffffff;
@@ -305,8 +311,8 @@
     }
     .busca-input:focus {
       outline: none;
-      border-color: #005baa;
-      box-shadow: 0 0 0 3px rgba(0,91,170,0.12);
+      border-color: var(--painel-blue,#1351b4);
+      box-shadow: 0 0 0 3px rgba(19,81,180,0.12);
     }
     .favoritos-toggle {
       padding: 10px 16px;
@@ -382,7 +388,7 @@
     }
     .modal-link {
       font-size: 0.82rem;
-      color: #005baa;
+      color: var(--painel-blue,#1351b4);
       text-decoration: none;
       font-weight: 600;
       white-space: nowrap;
@@ -739,7 +745,7 @@
     <p class="empty-state" id="estadoVazio">Nenhum painel encontrado para esta busca.</p>
   </main></div>
 
-  <footer></footer>
+  <footer>Ministério da Saúde · SAPS · Gestão da APS — 2026</footer>
 
   <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
     <div class="modal-painel" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
