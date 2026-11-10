@@ -24,6 +24,14 @@
   const banner=document.createElement('section');banner.className='painel-cookie';banner.setAttribute('aria-label','Cookies e privacidade');
   banner.innerHTML='<div><strong>Cookies e privacidade</strong><p>Usamos recursos essenciais ao funcionamento do painel. O Google Analytics só é ativado com sua autorização para analisar o uso e melhorar o serviço.</p></div><div class="painel-cookie-acoes"><button type="button" class="btn-abrir" id="cookie-preferencias">Preferências</button><button type="button" class="btn-abrir" id="cookie-necessarios">Apenas necessários</button><button type="button" class="painel-primary" id="cookie-aceitar">Aceitar todos</button></div>';
   banner.hidden=valid(choice);document.body.append(banner);
+  // O banner é fixo no rodapé e fica por cima do conteúdo (ex: cards da
+  // última linha em telas mais baixas/tablet) — reserva espaço no fim da
+  // página do tamanho do banner enquanto ele está visível, pra nada
+  // interativo ficar inacessível ao toque atrás dele.
+  function ajustarEspacoBanner(){document.body.style.paddingBottom=banner.hidden?'':banner.offsetHeight+'px';}
+  ajustarEspacoBanner();
+  window.addEventListener('resize',ajustarEspacoBanner);
+  new ResizeObserver(ajustarEspacoBanner).observe(banner);
   const dialog=document.createElement('dialog');dialog.className='painel-dialog';dialog.setAttribute('aria-labelledby','cookie-titulo');
   dialog.innerHTML='<div class="painel-dialog-titulo"><h2 id="cookie-titulo">Preferências de cookies</h2><button type="button" id="cookie-fechar" aria-label="Fechar preferências">×</button></div><p><strong>Recursos essenciais</strong><br>Mantêm a navegação, o cache de disponibilidade e sua preferência de privacidade. Permanecem ativos.</p><label class="painel-cookie-opcao"><input type="checkbox" id="cookie-analise"> Permitir cookies de análise</label><p>O Google Analytics registra dados de uso, como páginas e recursos acessados. Recusar não limita as consultas. Você pode alterar sua escolha a qualquer momento no rodapé.</p><div class="painel-dialog-acoes"><button type="button" id="cookie-salvar" class="painel-primary">Salvar preferências</button><button type="button" id="cookie-recusar" class="btn-abrir">Apenas necessários</button></div>';
   document.body.append(dialog);const $=id=>document.getElementById(id);let last;
@@ -34,7 +42,7 @@
     const revoke=loaded&&!analytics;
     choice={version:1,analytics,essential:true,updatedAt:new Date().toISOString()};
     let saved=true;try{localStorage.setItem(KEY,JSON.stringify(choice));}catch(_){saved=false;}
-    banner.hidden=true;if(dialog.open)close();
+    banner.hidden=true;ajustarEspacoBanner();if(dialog.open)close();
     if(!analytics)clearAnalytics();else enable();
     if(!saved)link.textContent='Preferências de cookies (válidas nesta sessão)';
     // Remove a biblioteca da memória; a próxima carga não a solicita novamente.
