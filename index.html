@@ -279,8 +279,7 @@
     .card a.acessar:hover {
       background: #0c326f;
     }
-    /* Rodapé padrão das nossas páginas: texto centralizado, cinza, sem fundo
-       (a antiga faixa de 6px esmagava o link de cookies do privacidade.js). */
+    /* Rodapé no padrão do SIAPS (faixa azul-marinho, texto branco); o visual final está em visual_saps.css. */
     footer {
       margin-top: 24px;
       padding: 25px 30px;
@@ -450,8 +449,8 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="visual_saps.css?v=20261024-sus">
-  <link rel="stylesheet" href="privacidade.css?v=20261024">
+  <link rel="stylesheet" href="visual_saps.css?v=20261110-rodape">
+  <link rel="stylesheet" href="privacidade.css?v=20261110">
 </head>
 <body>
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
@@ -733,9 +732,9 @@
       <h2>Eventos</h2>
       <div class="cards">
         <div class="card cat-eventos" data-id="totems">
-          <button class="favorite-btn" type="button" aria-label="Favoritar Totems" onclick="alternarFavorito(event, 'totems', this)">☆</button>
-          <div class="thumb"><img src="imagens/totems.svg" alt="Totems interativos para eventos" loading="lazy" onerror="handleImgError(this)"></div>
-          <div class="card-title"><h3>Totems</h3><span class="badge interno"><span class="dot"></span>Interno</span></div>
+          <button class="favorite-btn" type="button" aria-label="Favoritar Totem para eventos" onclick="alternarFavorito(event, 'totems', this)">☆</button>
+          <div class="thumb"><img src="imagens/totems.svg" alt="Totem para eventos" loading="lazy" onerror="handleImgError(this)"></div>
+          <div class="card-title"><h3>Totem para eventos</h3><span class="badge interno"><span class="dot"></span>Interno</span></div>
           <p class="desc">Acesse o Jogo do Combo de Equipamentos para UBS e o Totem Caminhos da Equidade. Visualize online ou baixe para usar sem internet nos eventos.</p>
           <a class="acessar" href="eventos/totems/index.html" onclick="rastrearClique('Totems', 'Eventos', this.href)">Abrir →</a>
         </div>
