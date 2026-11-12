@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>Município 3D — UBS modelo</title>
+  <script type="module" crossorigin src="./pacote/index-C6LHpJHJ.js"></script>
+  <link rel="stylesheet" crossorigin href="./pacote/index-B3Zpj9bq.css">
+</head>
+<body>
+<canvas id="cena"></canvas>
+<div id="carregando">Carregando a cidade…</div>
+
+<header id="hud" hidden>
+  <div class="hud-esq">
+    <strong id="hud-municipio"></strong>
+    <span id="hud-parcela"></span>
+  </div>
+  <div class="hud-dir">
+    <button id="btn-noite">☾ Noite</button>
+    <button id="btn-nota">Nota técnica</button>
+    <button id="btn-trocar">Trocar município</button>
+  </div>
+</header>
+
+<aside id="sala" hidden>
+  <small id="sala-estrategia"></small>
+  <h2 id="sala-nome"></h2>
+  <ul id="sala-dados"></ul>
+  <p id="sala-itens"></p>
+</aside>
+
+<div id="roteiro" hidden>
+  <div class="rot-info"><small id="rot-titulo"></small><strong id="rot-parada"></strong></div>
+  <div class="rot-ctrl">
+    <button id="rot-ant" aria-label="Anterior">⏮</button>
+    <button id="rot-pausa" aria-label="Pausar ou continuar">⏸</button>
+    <button id="rot-prox" aria-label="Próxima">⏭</button>
+    <button id="rot-sair">✕ Sair</button>
+  </div>
+  <div class="rot-barra"><span id="rot-progresso"></span></div>
+</div>
+<p id="aviso" hidden></p>
+
+<aside id="painel" hidden></aside>
+
+<nav id="controles">
+  <button id="btn-rot-ubs" class="roteiro-btn">▶ Roteiro pela UBS</button>
+  <button id="btn-rot-cidade" class="roteiro-btn">▶ Roteiro pela cidade</button>
+  <button data-modo="cidade">Cidade</button>
+  <button data-modo="corte">UBS em corte</button>
+  <button data-modo="dentro">Explorar a UBS</button>
+</nav>
+
+<p id="legenda">UBS modelo de referência do PAC Saúde (Porte I), não a unidade real do município. Figuras translúcidas: sem registro nesta parcela. Cidade, pessoas e mobiliário são ilustrativos.</p>
+
+<div id="joystick" hidden><div id="manche"></div></div>
+<p id="dica" hidden>Arraste para olhar. Use o círculo, ou W A S D, para andar. Toque numa equipe ou placa para ver os dados.</p>
+
+<section id="seletor" hidden>
+  <div class="seletor-caixa">
+    <p class="seletor-marca">Atenção Primária à Saúde · SAPS/MS</p>
+    <h1>Conheça a UBS do seu município</h1>
+    <p id="seletor-parcela"></p>
+    <h2 id="seletor-titulo">Escolha o estado</h2>
+    <div id="seletor-ufs"></div>
+    <input id="seletor-busca" type="search" placeholder="Buscar município" hidden autocomplete="off">
+    <div id="seletor-lista"></div>
+  </div>
+</section>
+
+</body>
+</html>
