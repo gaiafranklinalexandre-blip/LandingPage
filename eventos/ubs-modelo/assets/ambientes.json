@@ -1,0 +1,260 @@
+[
+ {
+  "nome": "Previsão Casa de bomba",
+  "area_m2": 3.7,
+  "x": 236.36,
+  "z": -3.04
+ },
+ {
+  "nome": "T.PD.03 CH.01 Banh. Func. Almoxarifado Fem. VS01",
+  "area_m2": 4.4,
+  "x": 251.6,
+  "z": 0.31
+ },
+ {
+  "nome": "Armários Func. T.M.01 BPC.180d Geladeira Copa",
+  "area_m2": 7.69,
+  "x": 247.66,
+  "z": 1.14
+ },
+ {
+  "nome": "Sala de Integração das Equipes",
+  "area_m2": 16.11,
+  "x": 245.53,
+  "z": 2.07
+ },
+ {
+  "nome": "Área Verde para Descompressão Equipe",
+  "area_m2": 29.75,
+  "x": 239.78,
+  "z": 2.57
+ },
+ {
+  "nome": "Área Reservada para manobra de veículos",
+  "area_m2": 178.49,
+  "x": 231.99,
+  "z": 2.63
+ },
+ {
+  "nome": "Circulação 06",
+  "area_m2": 7.44,
+  "x": 248.71,
+  "z": 2.86
+ },
+ {
+  "nome": "Estante de Aço Armário de Aço Fechado DML",
+  "area_m2": 3.14,
+  "x": 249.4,
+  "z": 4.45
+ },
+ {
+  "nome": "VS01 Banh. Func. Masc.",
+  "area_m2": 3.6,
+  "x": 252.04,
+  "z": 4.86
+ },
+ {
+  "nome": "MB.CD04 MB.MS120 Sala de Gestão Administrativa",
+  "area_m2": 7.93,
+  "x": 245.13,
+  "z": 5.84
+ },
+ {
+  "nome": "Sala de Preparo e Esterilização (Limpa)",
+  "area_m2": 6.1,
+  "x": 251.35,
+  "z": 6.31
+ },
+ {
+  "nome": "Paramentação",
+  "area_m2": 2.22,
+  "x": 250.15,
+  "z": 6.92
+ },
+ {
+  "nome": "EXP Sala de Recepção e Limpeza (suja)",
+  "area_m2": 6.9,
+  "x": 250.35,
+  "z": 8.69
+ },
+ {
+  "nome": "Central de Gases",
+  "area_m2": 1.3,
+  "x": 242.48,
+  "z": 9.26
+ },
+ {
+  "nome": "Equipo Odontologia Consultório Odontológico",
+  "area_m2": 9.67,
+  "x": 249.74,
+  "z": 9.96
+ },
+ {
+  "nome": "Bomba vácuo",
+  "area_m2": 1.01,
+  "x": 252.92,
+  "z": 9.98
+ },
+ {
+  "nome": "Sala de Curativo",
+  "area_m2": 10.05,
+  "x": 245.51,
+  "z": 10.39
+ },
+ {
+  "nome": "MB.POL. BPC.120e Sala de Medicação, Reidratação e Coleta de Exames",
+  "area_m2": 12.0,
+  "x": 239.11,
+  "z": 10.49
+ },
+ {
+  "nome": "Aplicação de Medicamentos",
+  "area_m2": 9.9,
+  "x": 234.94,
+  "z": 11.19
+ },
+ {
+  "nome": "Compressor",
+  "area_m2": 1.01,
+  "x": 252.92,
+  "z": 11.22
+ },
+ {
+  "nome": "BPC.180e BA80 Sanit. PCD Coleta BA40",
+  "area_m2": 3.4,
+  "x": 242.81,
+  "z": 11.24
+ },
+ {
+  "nome": "Embarque de Ambulância p/ transferência",
+  "area_m2": 31.6,
+  "x": 231.74,
+  "z": 11.47
+ },
+ {
+  "nome": "Circulação 02",
+  "area_m2": 11.1,
+  "x": 238.76,
+  "z": 12.72
+ },
+ {
+  "nome": "Circulação 03",
+  "area_m2": 7.72,
+  "x": 245.21,
+  "z": 12.73
+ },
+ {
+  "nome": "BPC.220e Armário Superior 02 T.M.02 T.M.01 BPC.150de- Educação em Escovário Saúde Bucal (Escovário)",
+  "area_m2": 6.89,
+  "x": 251.0,
+  "z": 13.1
+ },
+ {
+  "nome": "Circulação 04",
+  "area_m2": 15.36,
+  "x": 247.68,
+  "z": 13.15
+ },
+ {
+  "nome": "Consultório Diferenciado MB.MS120 (Ginecologia) Acessível MB.G",
+  "area_m2": 11.2,
+  "x": 239.63,
+  "z": 15.1
+ },
+ {
+  "nome": "MB.MS120 Consultório Indiferenciado",
+  "area_m2": 9.24,
+  "x": 235.73,
+  "z": 15.19
+ },
+ {
+  "nome": "BE01 DC01 VS01 Consultório e Multi/ Sala Lilás",
+  "area_m2": 9.38,
+  "x": 243.0,
+  "z": 15.5
+ },
+ {
+  "nome": "BA80 T.M.02 LV01 Geladeira BA40 Termolábeis Gel. Termo. Armazenamento",
+  "area_m2": 11.01,
+  "x": 250.65,
+  "z": 15.89
+ },
+ {
+  "nome": "Área Verde - Horta",
+  "area_m2": 21.6,
+  "x": 243.26,
+  "z": 18.35
+ },
+ {
+  "nome": "Sanitário PCD Fem.",
+  "area_m2": 3.4,
+  "x": 250.04,
+  "z": 18.87
+ },
+ {
+  "nome": "Armário Marcenaria 2 Recepção MB.CD01 MB.CD01",
+  "area_m2": 11.35,
+  "x": 250.21,
+  "z": 21.11
+ },
+ {
+  "nome": "LV01 T.M.02 Mesa MB.CD01 Auxiliar MB.MS120 Sala de atendimento Balança RN individuaizado/ Acolhimento",
+  "area_m2": 9.5,
+  "x": 244.14,
+  "z": 22.54
+ },
+ {
+  "nome": "Sala de Práticas Coletivas",
+  "area_m2": 24.83,
+  "x": 238.72,
+  "z": 22.56
+ },
+ {
+  "nome": "Área Verde para atividades ao ar livre",
+  "area_m2": 22.6,
+  "x": 232.37,
+  "z": 23.07
+ },
+ {
+  "nome": "Praticas Coletivas Externas",
+  "area_m2": 20.61,
+  "x": 234.69,
+  "z": 23.08
+ },
+ {
+  "nome": "A Resíduos Contaminado (Grupos A e E)",
+  "area_m2": 3.01,
+  "x": 229.47,
+  "z": 24.54
+ },
+ {
+  "nome": "Espera",
+  "area_m2": 33.04,
+  "x": 250.4,
+  "z": 24.64
+ },
+ {
+  "nome": "Circulação 01",
+  "area_m2": 13.86,
+  "x": 244.16,
+  "z": 24.68
+ },
+ {
+  "nome": "Resíduos Comum (Grupo D)",
+  "area_m2": 3.77,
+  "x": 230.3,
+  "z": 26.85
+ },
+ {
+  "nome": "T.M.01 Sala de Amamentação",
+  "area_m2": 6.0,
+  "x": 242.38,
+  "z": 26.94
+ },
+ {
+  "nome": "MB.CD01 MB.MS120 MB.CD04 Sala de Vacinação",
+  "area_m2": 10.0,
+  "x": 244.66,
+  "z": 27.11
+ }
+]
