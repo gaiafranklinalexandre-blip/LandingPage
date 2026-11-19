@@ -1,8 +1,22 @@
+> **Localização:** esta pasta (`03_LANDING_PAGE/`) é o projeto da landing page, dentro do APS 360 desde 12/11/2026 (antes ficava em `Documentos\LANDING_PAGE`). O `sus-logo.png` da raiz desta pasta também é usado por `painel_visual.py` e por `02_PAGINAS_ONLINE/Panorama/gerar_panorama_html.py`: não renomear sem ajustar esses scripts. As regras gerais do APS 360 (`AGENTS.md` da raiz) valem aqui; em especial, publicar exige autorização a cada vez.
+
 # Landing page de painéis SAPS
+
+## Design web vigente — 19/11/2026
+
+Implementado o gov.br DS 3.7.0 aprovado pelo usuário, com logo SUS no cabeçalho. Rawline e Font Awesome incorporados, superfícies brancas/cinza, azul de interação e componentes sem os degradês anteriores. Os 16 cartões atuais, destinos, descrições, favoritos e consentimento foram preservados; a revisão visual foi aplicada em `visual_saps.css` e o tema comum em `govbr_base.css`. Fonte única dos fundamentos e comandos no [README do tema](../02_PAGINAS_ONLINE/design_referencia/govbr/README.md).
+
+Teste do tema passou em sete larguras (320–1920 px), sem erros JavaScript; categorias, favoritos persistidos e menu móvel aprovados. Capturas na pasta temporária, evidência em `docs/validacoes/govbr-2026-11-19.json`. Publicação desta revisão autorizada pelo usuário em 19/11/2026. As seções datadas abaixo descrevem revisões anteriores.
+
+## Redirecionamento do endereço antigo — 18/11/2026
+
+Publicado em `Panorama_APS/landing_apoiadores_saps.html`: ao abrir a página no domínio `saps-atentimentos.onrender.com`, o JavaScript no início do cabeçalho redireciona imediatamente para `https://atendimentos-saps.onrender.com/` usando `window.location.replace`, sem manter a página antiga no histórico. A condição de domínio evita ciclos se o mesmo HTML for utilizado no endereço novo e mantém a prévia local disponível. Requer JavaScript; não configura um redirecionamento HTTP nem altera as páginas de eventos.
+
+O destino respondeu HTTP 200. Após a solicitação de ativação no site, o índice foi publicado no commit `132ce86eefc74663f5b2ac1ed5a2d9fb3e1257a3` do repositório `LandingPage`, sem reenviar totens ou outros recursos. HTML do Render conferido por SHA-256. No Edge público, o endereço antigo chegou ao novo automaticamente, sem ciclo ou erros JavaScript; acesso direto ao novo também aprovado. Evidência e commit anterior para rollback em `validacao/publicacao_redirecionamento.json`.
 
 ## Identidade visual — 24/10/2026
 
-Logo SUS padronizado por solicitação do usuário com `APS 360/LadingPage_Notas/sus-logo.png`. Cópias integrais em imagens/logo_sus.png e imagens/icon.png; cabeçalho e favicon com parâmetro de versão atualizado. Proporção preservada e dimensões conferidas em 320, 390, 768 e 1440 px. Arquivo padrão também aplicado ao painel de notas e ao frontend de credenciamentos.
+Logo SUS padronizado por solicitação do usuário com `03_LANDING_PAGE/sus-logo.png`. Cópias integrais em imagens/logo_sus.png e imagens/icon.png; cabeçalho e favicon com parâmetro de versão atualizado. Proporção preservada e dimensões conferidas em 320, 390, 768 e 1440 px. Arquivo padrão também aplicado ao painel de notas e ao frontend de credenciamentos.
 
 Após avaliação do usuário, removidos os três KPIs de contagem (painéis, categorias e favoritos). Mantidos busca, filtros e favoritos; a indicação de resultados continua junto à lista.
 
@@ -24,7 +38,7 @@ A fonte da landing page é `Panorama_APS/landing_apoiadores_saps.html`. No repos
 
 O arquivo local `Panorama_APS/index.html` contém outro painel e não é a fonte da landing page.
 
-Site público: https://saps-atentimentos.onrender.com/
+Site público: https://atendimentos-saps.onrender.com/. O endereço antigo https://saps-atentimentos.onrender.com/ redireciona pelo JavaScript do índice desde 18/11/2026.
 
 O endereço de referência para acesso e conferência é o do Render acima. O repositório GitHub é o destino dos arquivos e do histórico de alterações.
 
@@ -59,7 +73,7 @@ O script antigo ainda imprime um endereço do GitHub Pages ao terminar. Para ace
 ## Encerramento da sessao - 24/10/2026
 
 - Favicon anterior restaurado nas tres paginas. Icone PNG de 13.108 bytes; nao usar o logo SUS como favicon.
-- Logo SUS mantido exclusivamente na identidade do cabecalho. Fonte aprovada: `APS 360/LadingPage_Notas/sus-logo.png`. Manter favicon e logo como recursos independentes.
+- Logo SUS mantido exclusivamente na identidade do cabecalho. Fonte aprovada: `03_LANDING_PAGE/sus-logo.png`. Manter favicon e logo como recursos independentes.
 - Verificacao HTTP nesta sessao: os tres sites responderam 200, com o favicon anterior e o logo SUS no cabecalho. Esta conferencia valida recursos publicados; nao equivale a uma nova validacao visual ou funcional completa.
 - Sites: https://notas-tecnicas-aps.onrender.com/, https://saps-atentimentos.onrender.com/ e https://credenciamentos.onrender.com/.
 - Notas: correcao persistida em `painel_visual.py`, `favicon.png` e HTML regenerado; publicada via `publicar.py`.
@@ -75,9 +89,9 @@ O script antigo ainda imprime um endereço do GitHub Pages ao terminar. Para ace
 
 - Card Totems classificado como Interno, mantido na categoria Eventos e no filtro de painéis internos. Categoria Eventos e card Totems apontam para `eventos/totems/index.html`.
 - Página especial com visualização online e download direto dos HTMLs, sem ZIP. Ambos funcionam offline; destinos dos QR codes exigem internet.
-- Fontes de entrega: `APS 360/TOTEM/COMBO/index.html` e `APS 360/TOTEM/EQUIDADE/index.html`. Não editar as cópias publicáveis nem enviar fontes, bases ou referências avulsas.
-- Em toda atualização solicitada dos totens, gerar os HTMLs no projeto de origem e publicar também na landing page. O publicador exige `--totem-source "CAMINHO/PARA/APS 360/TOTEM"` e sincroniza as duas entregas antes do envio, com hashes em `eventos/totems/manifesto.json`.
-- Comando na pasta Panorama_APS: `python publicar_landing.py --totem-source "CAMINHO/PARA/APS 360/TOTEM"`. Conferir o deploy no Render, visualização e download dos dois arquivos.
+- Fontes de entrega: `05_TOTEM/COMBO/index.html` e `05_TOTEM/EQUIDADE/index.html`. Não editar as cópias publicáveis nem enviar fontes, bases ou referências avulsas.
+- Em toda atualização solicitada dos totens, gerar os HTMLs no projeto de origem e publicar também na landing page. O publicador exige `--totem-source "05_TOTEM"` e sincroniza as duas entregas antes do envio, com hashes em `eventos/totems/manifesto.json`.
+- Comando na pasta Panorama_APS: `python publicar_landing.py --totem-source "05_TOTEM"`. Conferir o deploy no Render, visualização e download dos dois arquivos.
 
 
 ## Totems: condução da experiência — 08/11/2026
