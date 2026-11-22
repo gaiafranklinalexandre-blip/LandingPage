@@ -2,6 +2,10 @@
 
 # Landing page de painéis SAPS
 
+## Miniaturas automáticas — 22/11/2026
+
+Configuradas para atualizar a cada publicação do hub, conforme escolha do usuário. Fontes e manutenção: [miniaturas](Panorama_APS/miniaturas/README.md). São 14 tentativas públicas de captura; AgSUS autenticado e Totems mantêm suas imagens. Falhas conservam a última imagem/fallback. A execução usa o GitHub do projeto e o deploy atual do Render; notas/APIs continuam na Hostinger. O navegador consulta o manifesto e troca somente as imagens, sem alterar os cards ou suas ações.
+
 ## Design web vigente — 19/11/2026
 
 Implementado o gov.br DS 3.7.0 aprovado pelo usuário, com logo SUS no cabeçalho. Rawline e Font Awesome incorporados, superfícies brancas/cinza, azul de interação e componentes sem os degradês anteriores. Os 16 cartões atuais, destinos, descrições, favoritos e consentimento foram preservados; a revisão visual foi aplicada em `visual_saps.css` e o tema comum em `govbr_base.css`. Fonte única dos fundamentos e comandos no [README do tema](../02_PAGINAS_ONLINE/design_referencia/govbr/README.md).
@@ -117,3 +121,7 @@ Nos seis caminhos, organização do cuidado e financiamento ficam juntos na aba 
 ## Textos da interface — 09/11/2026
 
 Não converter prompts, orientações internas ou justificativas de implementação em mensagens para o participante. Evitar frases genéricas de condução e textos que apenas repetem os botões, como “Explore no seu ritmo. Depois, siga para a próxima etapa.”. Conteúdo educativo, informação de estado necessária e rótulos de ação devem ser objetivos. As orientações de manutenção ficam na documentação. Regra detalhada também registrada em TOTEM/AGENTS.md, Codex.md e no README do Equidade. A correção remove essas mensagens da entrega online e do download.
+
+## Revisão de 22/11/2026
+
+Componentes e interações do gov.br DS revistos no portal: header/menu/cards/input/breadcrumb/footer, foco e modal acessível. Evidência: `docs/validacoes/govbr-landing-2026-11-22.json` na raiz APS 360. Publicação autorizada nesta entrega. O publicador próprio exige escolher `--sem-totems` ou `--totem-source`; nesta revisão usar somente `--sem-totems`. A publicação conjunta foi preparada com manifesto explícito e commit atômico, preservando os caminhos dos Totems. O wrapper Tableau local é legado e não substitui a landing de produção.

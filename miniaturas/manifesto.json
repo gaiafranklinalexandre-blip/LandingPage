@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "thumbnails": {
+    "notas-tecnicas": {
+      "src": "imagens/miniaturas/notas-tecnicas.jpg",
+      "sha256": "3225cc8cc6076131a28c9cd39f82e4e4c9188d1b5914ef70522d1e6dbbeb31c6",
+      "updatedAt": "2026-11-22T17:43:01.503Z"
+    }
+  }
+}

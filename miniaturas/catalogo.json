@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "timeoutMs": 60000,
+  "waitMs": 8000,
+  "minBytes": 10000,
+  "targets": [
+    {
+      "id": "credenciamentos-aps",
+      "url": "https://painel-credenciamentos.onrender.com/",
+      "enabled": true,
+      "waitMs": 20000
+    },
+    {
+      "id": "mais-medicos",
+      "url": "https://app.powerbi.com/view?r=eyJrIjoiMTZkYzIxZGUtMTU5NS00NDllLWI4OGMtM2VhMzJmNDJkZWI4IiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9&pageName=ad4a2a374aec48992ed2",
+      "enabled": true,
+      "waitMs": 20000
+    },
+    {
+      "id": "panorama-aps",
+      "url": "https://apspanorama.onrender.com/",
+      "enabled": true
+    },
+    {
+      "id": "aps-em-numeros",
+      "url": "https://app.powerbi.com/view?r=eyJrIjoiOWRmOTNkZjktYjhkZC00NjI2LTk0YzQtMDEwNTY3OWQ5NWUzIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9",
+      "enabled": true,
+      "waitMs": 20000
+    },
+    {
+      "id": "siops",
+      "url": "https://portal-dados-municipais.lovable.app/",
+      "enabled": true
+    },
+    {
+      "id": "notas-tecnicas",
+      "url": "https://notas-tecnicas-aps.onrender.com/",
+      "enabled": true,
+      "ready": "#tabela tbody tr"
+    },
+    {
+      "id": "censo-nacional-ubs",
+      "url": "https://app.powerbi.com/view?r=eyJrIjoiZjdkMjIyMjUtZjhiNi00NmY3LTgwOTQtMTBkMzljZjFjYzkxIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9",
+      "enabled": true,
+      "waitMs": 20000
+    },
+    {
+      "id": "censo-ubs-fluvial",
+      "url": "https://app.powerbi.com/view?r=eyJrIjoiMmNmNTQ1NWQtNzdmOC00OTg0LTlmZTMtNDg5NTc0OWE5NmRkIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9",
+      "enabled": true,
+      "waitMs": 20000
+    },
+    {
+      "id": "monitoramento-agsus",
+      "url": "https://app.powerbi.com/groups/me/reports/15cef623-63dc-4a27-a26b-6ae2991eaf70/eb15333dd8d9040b1ce8?ctid=7673b0fd-2c63-4ac7-9d35-a71abe702c9b&experience=power-bi",
+      "enabled": false,
+      "reason": "Power BI exige autenticação; preservar miniatura existente"
+    },
+    {
+      "id": "combo-acompanhamento",
+      "url": "https://painel-cgfap-combo.netlify.app/",
+      "enabled": true
+    },
+    {
+      "id": "cobertura-aps",
+      "url": "https://painel-cobertura-aps-cgfap.netlify.app/",
+      "enabled": true
+    },
+    {
+      "id": "obras-aps",
+      "url": "https://painel-obras-aps-cgfap.netlify.app/",
+      "enabled": true
+    },
+    {
+      "id": "egestor-aps",
+      "url": "https://egestoraps.saude.gov.br/",
+      "enabled": true
+    },
+    {
+      "id": "investsus-paineis",
+      "url": "https://investsuspaineis.saude.gov.br/extensions/CGIN_InvestsusPaineis/CGIN_InvestsusPaineis.html",
+      "enabled": true
+    },
+    {
+      "id": "siaps",
+      "url": "https://siaps.saude.gov.br/publico",
+      "enabled": true
+    },
+    {
+      "id": "totems",
+      "url": "https://atendimentos-saps.onrender.com/eventos/totems/index.html",
+      "enabled": false,
+      "reason": "Totems preservados conforme exceção do usuário"
+    }
+  ]
+}

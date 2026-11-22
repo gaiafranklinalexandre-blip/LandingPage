@@ -1,0 +1,44 @@
+name: Atualizar miniaturas dos painéis
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'imagens/miniaturas/**'
+      - 'miniaturas/manifesto.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: miniaturas-paineis
+  cancel-in-progress: false
+jobs:
+  atualizar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Instalar capturador em pasta temporária
+        run: |
+          npm install --prefix "$RUNNER_TEMP/aps-miniaturas" --ignore-scripts --no-audit --no-fund playwright@1.64.1
+          "$RUNNER_TEMP/aps-miniaturas/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verificar preservação e publicação
+        env:
+          APS_PLAYWRIGHT: ${{ runner.temp }}/aps-miniaturas/node_modules/playwright
+        run: node --test miniaturas/testes.cjs
+      - name: Gerar capturas públicas
+        if: success()
+        env:
+          APS_PLAYWRIGHT: ${{ runner.temp }}/aps-miniaturas/node_modules/playwright
+          MINIATURAS_REPORT: ${{ runner.temp }}/miniaturas-relatorio.json
+        run: node miniaturas/atualizar.cjs --report "$MINIATURAS_REPORT"
+      - name: Publicar imagens validadas
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          MINIATURAS_REPORT: ${{ runner.temp }}/miniaturas-relatorio.json
+        run: node miniaturas/publicar.cjs

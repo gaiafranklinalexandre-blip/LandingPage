@@ -41,3 +41,13 @@ Consulte `README.md` para o fluxo de manutenção.
 ## Textos da interface — 09/11/2026
 
 Não converter prompts, orientações internas ou justificativas de implementação em mensagens para o participante. Evitar frases genéricas de condução e textos que apenas repetem os botões, como “Explore no seu ritmo. Depois, siga para a próxima etapa.”. Conteúdo educativo, informação de estado necessária e rótulos de ação devem ser objetivos. As orientações de manutenção ficam na documentação. Regra detalhada também registrada em 05_TOTEM/AGENTS.md, Codex.md e no README do Equidade. A correção remove essas mensagens da entrega online e do download.
+
+## Publicação sem Totems — 22/11/2026
+
+Para alteração somente do portal, usar `Panorama_APS/publicar_landing.py --sem-totems`. Esse modo não prepara nem envia as entregas de Eventos. `--totem-source` somente quando Totems fizerem parte de um pedido explícito. Na padronização de 22/11/2026 a publicação já foi autorizada pelo usuário; concluir sem pedir nova confirmação.
+
+## Miniaturas automáticas — 22/11/2026
+
+Pedido do usuário: atualizar miniaturas **a cada nova publicação do hub**, mantendo os destinos Render + Hostinger. Seguir `Panorama_APS/miniaturas/README.md`. Fonte: catálogo, capturador, cliente e publicador nessa pasta; workflow `.github/workflows/atualizar-miniaturas.yml` no repositório LandingPage. Atualizar o catálogo junto dos IDs/URLs de cards novos. Capturar somente destinos públicos sem autenticação; Totems e Power BI autenticado conservam suas imagens existentes. O cliente mantém fallback e versão de cache por hash.
+
+A atualização automática autoriza o fluxo de imagens geradas `imagens/miniaturas/` e o manifesto desse hub. Publicar mudanças de automação com manifesto explícito; nunca incluir relatórios locais ou credenciais. Commits dos próprios arquivos gerados ficam fora do gatilho. Conferir execução GitHub e entrega Render; alteração no Git não é prova de imagem atualizada no navegador. A skill Sites fornece somente boas práticas; a hospedagem continua nos serviços existentes.
