@@ -31,6 +31,10 @@ node 03_LANDING_PAGE/Panorama_APS/miniaturas/atualizar.cjs --somente notas-tecni
 
 O relatório local não deve ser publicado. Atualizar a fonte e os arquivos remotos em um commit revisado; conferir a execução automática no GitHub e a miniatura no Render. O pedido de atualização automática autoriza as próximas publicações de miniaturas deste hub; a regra não se estende a outros arquivos ou projetos. A rotina verifica os destinos do catálogo quando o hub é publicado; alterações em sites terceiros, sem uma publicação do hub, dependem do acionamento manual.
 
+O manifesto de manutenção `02_PAGINAS_ONLINE/validacao/manifesto_miniaturas_20261122.json`, na raiz APS 360, preserva os arquivos gerados no GitHub. O manifesto `manifesto_miniaturas_bootstrap_20261122.json` foi usado somente na implantação inicial; não reutilizar uma cópia antiga de imagens/manifesto para sobrescrever o estado automático atual. O conteúdo gerado remoto é a referência para sincronizar uma prévia local.
+
+A revisão inicial de capturas identificou retorno de indisponibilidade do Mais Médicos e um carregamento sem conteúdo no Panorama legado. Essas capturas foram retiradas do manifesto e a verificação foi reforçada com casos de teste correspondentes; os cards conservam as imagens originais até uma captura válida. A miniatura não modifica nem substitui o destino do card.
+
 Verificações locais: captura real das Notas, casos simulados de HTTP/login/página vazia, fallback no navegador, exclusão de Totems e URLs externas, bloqueio de outros caminhos, árvore preservada e concorrência sem force. Execução remota e hashes são registrados em `03_LANDING_PAGE/validacao/publicacao_miniaturas_20261122.json`, na fonte APS 360.
 
 Referências oficiais: [capturas com Playwright](https://playwright.dev/docs/screenshots), [agendamento GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule) e [API de árvores Git](https://docs.github.com/en/rest/git/trees#create-a-tree).

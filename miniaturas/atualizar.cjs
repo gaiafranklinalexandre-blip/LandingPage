@@ -25,18 +25,19 @@ async function capture(page,target,config){
     const button=page.locator(selector);if(await button.isVisible().catch(()=>false))await button.click();
   }
   await page.waitForTimeout(target.waitMs??config.waitMs??5000);
-  const texts=[];let visuals=0;
+  const texts=[];let dominantVisual=false;
   for(const frame of page.frames()){
     try{
       if(frame!==page.mainFrame()&&!await(await frame.frameElement()).isVisible())continue;
       if(await frame.locator('input[type=password]:visible').count())throw Error('AUTENTICACAO');
-      texts.push((await frame.locator('body').innerText({timeout:5000})).slice(0,12000));
-      visuals+=await frame.locator('canvas:visible,svg:visible,img:visible').count();
+      const main=frame.locator('main:visible,[role=main]:visible').first();
+      texts.push((await(await main.count()?main:frame.locator('body')).innerText({timeout:5000})).slice(0,12000));
+      dominantVisual||=await frame.locator('canvas:visible,svg:visible,img:visible,[role=img]:visible').evaluateAll(es=>es.some(e=>{const r=e.getBoundingClientRect();return r.width>=500&&r.height>=250}));
     }catch(e){if(e.message==='AUTENTICACAO')throw e;}
   }
   const content=texts.join(' ').replace(/\s+/g,' ').trim();
-  if(/acesso (?:restrito|negado)|access denied|sign in to your account|entre para (?:acessar|exibir)|report (?:is )?unavailable|conte[uú]do indispon[ií]vel|application error|site not found|n[aã]o foi poss[ií]vel (?:carregar|buscar|consultar)|erro ao (?:carregar|buscar)/i.test(content))throw Error('CONTEUDO_INDISPONIVEL');
-  if((content.length<80&&!visuals)||(content.length<400&&/carregando|loading|aguarde/i.test(content)))throw Error('PAGINA_INCOMPLETA');
+  if(/acesso (?:restrito|negado)|access denied|sign in to your account|entre para (?:acessar|exibir)|report (?:is )?unavailable|conte[uú]do (?:indispon[ií]vel|n[aã]o est[aá] dispon[ií]vel)|this content (?:is not|isn't) available|application error|site not found|n[aã]o foi poss[ií]vel (?:carregar|buscar|consultar)|erro ao (?:carregar|buscar)/i.test(content))throw Error('CONTEUDO_INDISPONIVEL');
+  if((content.length<80&&(!dominantVisual||target.requireText))||(content.length<400&&/carregando|loading|aguarde|just a moment|verify you are human/i.test(content)))throw Error('PAGINA_INCOMPLETA');
   await page.evaluate(()=>document.fonts.ready);
   const buffer=await page.screenshot({type:'jpeg',quality:78,animations:'disabled',caret:'hide',timeout:20000});
   if(buffer.length<(config.minBytes||9000))throw Error('CAPTURA_VAZIA');

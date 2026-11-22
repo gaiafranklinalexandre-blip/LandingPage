@@ -35,7 +35,7 @@
   const dialog=document.createElement('dialog');dialog.className='painel-dialog';dialog.setAttribute('aria-labelledby','cookie-titulo');
   dialog.innerHTML='<div class="painel-dialog-titulo"><h2 id="cookie-titulo">Preferências de cookies</h2><button type="button" id="cookie-fechar" aria-label="Fechar preferências">×</button></div><p><strong>Recursos essenciais</strong><br>Mantêm a navegação, o cache de disponibilidade e sua preferência de privacidade. Permanecem ativos.</p><label class="painel-cookie-opcao"><input type="checkbox" id="cookie-analise"> Permitir cookies de análise</label><p>O Google Analytics registra dados de uso, como páginas e recursos acessados. Recusar não limita as consultas. Você pode alterar sua escolha a qualquer momento no rodapé.</p><div class="painel-dialog-acoes"><button type="button" id="cookie-salvar" class="painel-primary">Salvar preferências</button><button type="button" id="cookie-recusar" class="btn-abrir">Apenas necessários</button></div>';
   document.body.append(dialog);const $=id=>document.getElementById(id);let last;
-  const link=document.createElement('button');link.type='button';link.className='painel-privacidade-link';link.textContent='Preferências de cookies';document.querySelector('footer').append(link);
+  const link=document.createElement('button');link.type='button';link.className='painel-privacidade-link';link.textContent='Preferências de cookies';(document.querySelector('footer .portal-footer-inner')||document.querySelector('footer')).append(link);
   function open(){last=document.activeElement;$('cookie-analise').checked=valid(choice)&&choice.analytics===true;dialog.showModal();}
   function close(){dialog.close();last?.focus();}
   function persist(analytics){

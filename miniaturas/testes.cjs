@@ -16,14 +16,16 @@ test('captura real; falhas HTTP/login/página vazia preservam a imagem e o manif
     const fixture=async context=>context.route('https://qa.invalid/**',async route=>{
       const suffix=new URL(route.request().url()).pathname;
       if(suffix==='/fail')return route.fulfill({status:503,body:'Falha temporária'});
-      if(suffix==='/auth')return route.fulfill({status:200,contentType:'text/html',body:'<input type="password"><p>Acesso restrito</p>'});
-      if(suffix==='/empty')return route.fulfill({status:200,contentType:'text/html',body:'<body></body>'});
+      if(suffix==='/auth')return route.fulfill({status:200,contentType:'text/html; charset=utf-8',body:'<input type="password"><p>Acesso restrito</p>'});
+      if(suffix==='/empty')return route.fulfill({status:200,contentType:'text/html; charset=utf-8',body:'<body></body>'});
+      if(suffix==='/unavailable')return route.fulfill({status:200,contentType:'text/html; charset=utf-8',body:'<main><p>Esse conteúdo não está disponível.</p><p>Saiba mais sobre o Power BI. Microsoft Power BI. Serviços e painéis públicos.</p></main>'});
+      if(suffix==='/spinner')return route.fulfill({status:200,contentType:'text/html; charset=utf-8',body:'<header>Portal de informações públicas do Ministério da Saúde com navegação e serviços para municípios e estados</header><main><svg width="40" height="40"><circle cx="20" cy="20" r="15"/></svg></main>'});
       const body='<h1>Painel público de teste</h1>'+Array.from({length:24},(_,i)=>`<div style="display:inline-block;width:260px;height:100px;margin:8px;background:hsl(${i*27} 65% 65%);font:24px sans-serif">Indicador de teste ${i}</div>`).join('');
-      return route.fulfill({status:200,contentType:'text/html',body});
+      return route.fulfill({status:200,contentType:'text/html; charset=utf-8',body});
     });
     const first=await run({root,config,browser,prepareContext:fixture});assert.equal(first.results[0].status,'atualizada');
     const image=await fs.readFile(path.join(root,'imagens/miniaturas/painel.jpg')),manifest=await fs.readFile(path.join(root,'miniaturas/manifesto.json'));
-    for(const suffix of ['fail','auth','empty']){
+    for(const suffix of ['fail','auth','empty','unavailable','spinner']){
       config.targets[0].url='https://qa.invalid/'+suffix;const result=await run({root,config,browser,prepareContext:fixture});
       assert.equal(result.results[0].status,'preservada');assert.equal(result.changed.length,0);
       assert.deepEqual(await fs.readFile(path.join(root,'imagens/miniaturas/painel.jpg')),image);
@@ -37,7 +39,7 @@ test('cliente mantém fallback e Totems; rejeita URLs de imagens fora do própri
     const svg='<svg xmlns="http://www.w3.org/2000/svg" width="100" height="60"><rect width="100" height="60" fill="blue"/></svg>';
     await page.route('https://qa.invalid/**',route=>{
       const p=new URL(route.request().url()).pathname;
-      if(p==='/')return route.fulfill({contentType:'text/html',body:'<div class="card" data-id="nota"><img class="thumb" src="original.svg"></div><div class="card" data-id="totems"><img class="thumb" src="original.svg"></div><div class="card" data-id="outro"><img class="thumb" src="original.svg"></div>'});
+      if(p==='/')return route.fulfill({contentType:'text/html; charset=utf-8',body:'<div class="card" data-id="nota"><img class="thumb" src="original.svg"></div><div class="card" data-id="totems"><img class="thumb" src="original.svg"></div><div class="card" data-id="outro"><img class="thumb" src="original.svg"></div>'});
       if(p==='/original.svg')return route.fulfill({contentType:'image/svg+xml',body:svg});
       if(p.endsWith('manifesto.json'))return route.fulfill({contentType:'application/json',body:JSON.stringify({version:1,thumbnails:{nota:{src:'imagens/miniaturas/nota.jpg',sha256:'a'.repeat(64)},totems:{src:'imagens/miniaturas/totems.jpg',sha256:'a'.repeat(64)},outro:{src:'https://fora.invalid/segredo.jpg',sha256:'a'.repeat(64)}}})});
       return route.fulfill({status:404,body:'Indisponível'});

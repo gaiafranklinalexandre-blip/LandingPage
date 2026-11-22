@@ -23,7 +23,8 @@
     {
       "id": "panorama-aps",
       "url": "https://apspanorama.onrender.com/",
-      "enabled": true
+      "enabled": true,
+      "requireText": true
     },
     {
       "id": "aps-em-numeros",

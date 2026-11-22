@@ -51,3 +51,9 @@ Para alteração somente do portal, usar `Panorama_APS/publicar_landing.py --sem
 Pedido do usuário: atualizar miniaturas **a cada nova publicação do hub**, mantendo os destinos Render + Hostinger. Seguir `Panorama_APS/miniaturas/README.md`. Fonte: catálogo, capturador, cliente e publicador nessa pasta; workflow `.github/workflows/atualizar-miniaturas.yml` no repositório LandingPage. Atualizar o catálogo junto dos IDs/URLs de cards novos. Capturar somente destinos públicos sem autenticação; Totems e Power BI autenticado conservam suas imagens existentes. O cliente mantém fallback e versão de cache por hash.
 
 A atualização automática autoriza o fluxo de imagens geradas `imagens/miniaturas/` e o manifesto desse hub. Publicar mudanças de automação com manifesto explícito; nunca incluir relatórios locais ou credenciais. Commits dos próprios arquivos gerados ficam fora do gatilho. Conferir execução GitHub e entrega Render; alteração no Git não é prova de imagem atualizada no navegador. A skill Sites fornece somente boas práticas; a hospedagem continua nos serviços existentes.
+
+## Estrutura comum e catálogo de Eventos — 22/11/2026
+
+Cabeçalho, menu lateral e rodapé do hub e de Notas usam a fonte única `02_PAGINAS_ONLINE/design_referencia/govbr/estrutura-portal.css`, aplicada somente a `body[data-aps-layout="portal"]`. Não reintroduzir medidas independentes nos dois produtos. `sincronizar.py` também versiona as referências CSS/JS por hash para evitar cache antigo.
+
+O usuário pediu explicitamente o padrão gov.br na página `eventos/totems/index.html`. Alterar somente esse catálogo e `totems.css`, preservando os HTMLs de jogos e downloads. Não executar `preparar_totems.py` nem enviar entregas dos jogos em uma revisão só do catálogo. Verificar os nomes `totem-combo-ubs.html` e `totem-caminhos-equidade.html`, teclado e sete larguras com `validacao/conferir_catalogo_totems_govbr.cjs`.

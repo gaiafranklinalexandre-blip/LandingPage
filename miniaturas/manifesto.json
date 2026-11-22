@@ -11,16 +11,6 @@
       "sha256": "03d7ee8185a26ed4d1671c7fdb81283690a3959305c33e110f9cb2fe3ff73061",
       "updatedAt": "2026-11-22T17:52:20.970Z"
     },
-    "mais-medicos": {
-      "src": "imagens/miniaturas/mais-medicos.jpg",
-      "sha256": "e65e0152fbc22f89282213d22e4d43b45c38da19dccd101773bdbe0bf1db8d6a",
-      "updatedAt": "2026-11-22T17:52:20.970Z"
-    },
-    "panorama-aps": {
-      "src": "imagens/miniaturas/panorama-aps.jpg",
-      "sha256": "a830a23d7477abf595ee37397be91b15ac472caebeaafe14fa856ad97e7266ff",
-      "updatedAt": "2026-11-22T17:52:20.970Z"
-    },
     "aps-em-numeros": {
       "src": "imagens/miniaturas/aps-em-numeros.jpg",
       "sha256": "4ecc341acda5cffd5d6bbde34b5381726a2df2d5b4d0714c298cd2efa5d8782c",
