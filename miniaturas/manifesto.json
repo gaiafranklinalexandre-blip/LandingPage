@@ -3,8 +3,68 @@
   "thumbnails": {
     "notas-tecnicas": {
       "src": "imagens/miniaturas/notas-tecnicas.jpg",
-      "sha256": "3225cc8cc6076131a28c9cd39f82e4e4c9188d1b5914ef70522d1e6dbbeb31c6",
-      "updatedAt": "2026-11-22T17:43:01.503Z"
+      "sha256": "5fb93246667aa8896ea2facc2e4db95cda87d3a765dea206b1b430630e04a2dc",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "credenciamentos-aps": {
+      "src": "imagens/miniaturas/credenciamentos-aps.jpg",
+      "sha256": "03d7ee8185a26ed4d1671c7fdb81283690a3959305c33e110f9cb2fe3ff73061",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "mais-medicos": {
+      "src": "imagens/miniaturas/mais-medicos.jpg",
+      "sha256": "e65e0152fbc22f89282213d22e4d43b45c38da19dccd101773bdbe0bf1db8d6a",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "panorama-aps": {
+      "src": "imagens/miniaturas/panorama-aps.jpg",
+      "sha256": "a830a23d7477abf595ee37397be91b15ac472caebeaafe14fa856ad97e7266ff",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "aps-em-numeros": {
+      "src": "imagens/miniaturas/aps-em-numeros.jpg",
+      "sha256": "4ecc341acda5cffd5d6bbde34b5381726a2df2d5b4d0714c298cd2efa5d8782c",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "siops": {
+      "src": "imagens/miniaturas/siops.jpg",
+      "sha256": "9766f23580bf5baa7aa1f65d017e953d0cd6fbdfa4927ec961237832a9fbe7f0",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "censo-nacional-ubs": {
+      "src": "imagens/miniaturas/censo-nacional-ubs.jpg",
+      "sha256": "72bac9d4f16fd8dd0124c2f02c2cb72f224671adf1320709657e52858b46bf83",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "censo-ubs-fluvial": {
+      "src": "imagens/miniaturas/censo-ubs-fluvial.jpg",
+      "sha256": "7089601e626b6f40bca733ead2b66ce6a99e86a22fdabeb7c2170d95039ecf7d",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "combo-acompanhamento": {
+      "src": "imagens/miniaturas/combo-acompanhamento.jpg",
+      "sha256": "4dfa8739da8d0cf3a8970598ebdf60d256a0a455b3fe37d8077bfb4f49a9cc90",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "cobertura-aps": {
+      "src": "imagens/miniaturas/cobertura-aps.jpg",
+      "sha256": "1485dd6829cbcf09879ebae5da9251ab9fd198645520ea8355abdc8f3946534e",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "obras-aps": {
+      "src": "imagens/miniaturas/obras-aps.jpg",
+      "sha256": "e8f70ff9b2ffa8c21cb1f93a77abce78931c6bda3e6bd97c72bc5ac9be1b56ba",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "egestor-aps": {
+      "src": "imagens/miniaturas/egestor-aps.jpg",
+      "sha256": "55a140a5247a15587100622950254c746e7e913b545382fc52fb6322fb8e05b1",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
+    },
+    "investsus-paineis": {
+      "src": "imagens/miniaturas/investsus-paineis.jpg",
+      "sha256": "d25fa12048cf7714023da4fc686340be042b0c47255ad65710bc602ecf92eaf7",
+      "updatedAt": "2026-11-22T17:52:20.970Z"
     }
   }
 }
