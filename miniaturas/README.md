@@ -6,6 +6,8 @@ O hub mantém as imagens originais como fallback e consulta `miniaturas/manifest
 
 Workflow `Atualizar miniaturas dos painéis`, em `.github/workflows/atualizar-miniaturas.yml` do repositório `LandingPage`. Frequência escolhida pelo usuário: **a cada nova publicação do hub**, por push em `main`; também há acionamento manual em **Actions → Atualizar miniaturas dos painéis → Run workflow**. Commits que alteram apenas `imagens/miniaturas/` e o manifesto ficam fora do gatilho, para evitar ciclos. A atualização dos arquivos gerados usa o fluxo atual de deploy do Render. Não foi configurada execução diária.
 
+Uma publicação nova substitui a captura anterior ainda em andamento. As imagens existentes permanecem disponíveis até a captura da versão atual terminar; o publicador também recusa uma gravação baseada em HEAD antigo.
+
 A automação usa Node 24, Playwright **1.64.1** e Chromium no Ubuntu 24.04. As duas Actions estão fixadas por commit. A captura não recebe credenciais; o publicador usa o token efêmero do próprio GitHub apenas em memória. Nenhum serviço de hospedagem foi criado: o Render recebe as imagens pelo fluxo existente, e notas/APIs permanecem na Hostinger.
 
 ## Escopo e preservação

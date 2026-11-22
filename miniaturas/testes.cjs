@@ -39,7 +39,7 @@ test('cliente mantém fallback e Totems; rejeita URLs de imagens fora do própri
     const svg='<svg xmlns="http://www.w3.org/2000/svg" width="100" height="60"><rect width="100" height="60" fill="blue"/></svg>';
     await page.route('https://qa.invalid/**',route=>{
       const p=new URL(route.request().url()).pathname;
-      if(p==='/')return route.fulfill({contentType:'text/html; charset=utf-8',body:'<div class="card" data-id="nota"><img class="thumb" src="original.svg"></div><div class="card" data-id="totems"><img class="thumb" src="original.svg"></div><div class="card" data-id="outro"><img class="thumb" src="original.svg"></div>'});
+      if(p==='/')return route.fulfill({contentType:'text/html; charset=utf-8',body:'<div class="card" data-id="nota"><div class="thumb"><img src="original.svg"></div></div><div class="card" data-id="totems"><div class="thumb"><img src="original.svg"></div></div><div class="card" data-id="outro"><div class="thumb"><img src="original.svg"></div></div>'});
       if(p==='/original.svg')return route.fulfill({contentType:'image/svg+xml',body:svg});
       if(p.endsWith('manifesto.json'))return route.fulfill({contentType:'application/json',body:JSON.stringify({version:1,thumbnails:{nota:{src:'imagens/miniaturas/nota.jpg',sha256:'a'.repeat(64)},totems:{src:'imagens/miniaturas/totems.jpg',sha256:'a'.repeat(64)},outro:{src:'https://fora.invalid/segredo.jpg',sha256:'a'.repeat(64)}}})});
       return route.fulfill({status:404,body:'Indisponível'});
@@ -69,4 +69,21 @@ test('publicador bloqueia outros arquivos e concorrência; um commit preserva a 
     assert.equal(calls.find(c=>c.endpoint==='trees').body.base_tree,b);assert.deepEqual(calls.find(c=>c.method==='POST'&&c.endpoint==='commits').body.parents,[a]);
     assert.equal(calls.find(c=>c.method==='PATCH').body.force,false);assert.deepEqual(calls.find(c=>c.endpoint==='trees').body.tree.map(e=>e.path),['miniaturas/manifesto.json']);
   }finally{const resolved=await fs.realpath(root);if(path.dirname(resolved)!==await fs.realpath(base))throw Error('LIMPEZA_FORA_DO_DIRETORIO_DE_TESTE');await fs.rm(resolved,{recursive:true,force:true});}
+});
+test('cliente aplica miniatura válida ao HTML real dos cards e restaura o fallback ao retirar o registro',async()=>{
+  const browser=await launch();try{
+    const page=await browser.newPage();let include=true;
+    const image='<svg xmlns="http://www.w3.org/2000/svg" width="120" height="80"><rect width="120" height="80" fill="green"/></svg>';
+    await page.route('https://qa.invalid/**',route=>{
+      const name=new URL(route.request().url()).pathname;
+      if(name==='/')return route.fulfill({contentType:'text/html; charset=utf-8',body:'<div class="card" data-id="nota"><div class="card-header"><div class="thumb"><img alt="Prévia da nota" src="original.svg"></div></div></div>'});
+      if(name.endsWith('manifesto.json'))return route.fulfill({contentType:'application/json',body:JSON.stringify({version:1,thumbnails:include?{nota:{src:'imagens/miniaturas/nota.jpg',sha256:'b'.repeat(64)}}:{}})});
+      return route.fulfill({contentType:'image/svg+xml',body:image});
+    });
+    await page.goto('https://qa.invalid/');await page.addScriptTag({content:await fs.readFile(path.join(__dirname,'cliente.js'),'utf8')});
+    await page.waitForFunction(()=>document.querySelector('.thumb img').getAttribute('src').startsWith('imagens/miniaturas/'));
+    await page.waitForFunction(()=>document.querySelector('.thumb img').complete&&document.querySelector('.thumb img').naturalWidth===120);
+    include=false;await page.evaluate(()=>{const now=Date.now();Date.now=()=>now+300001;document.dispatchEvent(new Event('visibilitychange'));});
+    await page.waitForFunction(()=>document.querySelector('.thumb img').getAttribute('src')==='original.svg');assert.equal(await page.locator('.thumb img').getAttribute('alt'),'Prévia da nota');
+  }finally{await browser.close();}
 });

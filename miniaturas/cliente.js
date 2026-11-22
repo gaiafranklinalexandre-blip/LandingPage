@@ -13,7 +13,7 @@
       if(data.version!==1||!data.thumbnails)return;
       document.querySelectorAll('.card[data-id]').forEach(card=>{
         if(card.dataset.id==='totems')return;
-        const entry=data.thumbnails[card.dataset.id],img=card.querySelector('img.thumb');
+        const entry=data.thumbnails[card.dataset.id],img=card.querySelector('.thumb img,img.thumb');
         if(img&&!entry&&applied.has(img)){const original=originals.get(img);if(original){img.onerror=original.handler;img.hidden=false;img.src=original.src;}applied.delete(img);return;}
         if(!img||!entry||!/^imagens\/miniaturas\/[a-z0-9]+(?:-[a-z0-9]+)*\.jpg$/.test(entry.src)||!/^[a-f0-9]{64}$/.test(entry.sha256))return;
         const url=entry.src+'?v='+entry.sha256.slice(0,16);
