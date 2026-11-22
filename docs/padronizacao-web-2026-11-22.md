@@ -43,3 +43,18 @@ Manifesto público explícito: `02_PAGINAS_ONLINE/validacao/manifesto_padronizac
 O sincronizador comum agora atualiza somente o CSS da landing: não injeta o tema legado no novo Credenciamentos. Para publicar o portal sem mexer nos Totems, o publicador próprio exige `--sem-totems`; `--totem-source` fica reservado a um pedido que inclua explicitamente Totems. A demonstração avulsa é reproduzida da fonte local e incorpora seus recursos, sem Analytics e sem publicação.
 
 Depois de publicar, registrar commits e recursos servidos em `validacoes/govbr-publicacao-2026-11-22.json` e `validacoes/govbr-render-2026-11-22.json`. GitHub atualizado sozinho não comprova deploy.
+
+## Correções após conferência visual do usuário
+
+- Notas: o seletor legado `.header-logo` colidia com o nome oficial do Core. Renomeado no CSS legado e organizada a anatomia `header-menu`/`header-info`; marca sobre branco e título junto ao botão de menu.
+- Panorama: rótulos de selects agora são irmãos dos controles, com apenas um rótulo visível no aprimoramento; grid responsivo e dimensões iguais. O Core cria `.input-group` durante a inicialização: os seletores de alinhamento alcançam esse contêiner, nas versões avulsa e incorporada.
+- Hub: removidas as margens antigas do botão dentro de `card-footer`; ações ficam contidas e alinhadas ao conteúdo dos 16 cards.
+- Compartilhamento: janela nativa centralizada, superfície branca, anatomia de Modal, foco inicial no fechamento, ciclo de Tab, Escape, restauração do foco e da rolagem. Links de canais no corpo; dois botões no rodapé, Fechar e Copiar link, com o primário à direita. A cópia foi testada com clipboard simulado, sem disparar mensagens.
+- Ações da nota: grupo próprio junto ao título, Compartilhar secundário e Baixar Word primário à direita; em telas estreitas o grupo ocupa sua própria linha. Esta ênfase é decisão do produto, aplicada segundo a orientação oficial de hierarquia de botões.
+- Credenciamentos: `favicon.png` copiado da fonte das Notas, com referências nos três frontends do domínio e no protótipo; identidade SUS, sem logo gov.br.
+
+Referências consultadas: [Modal — uso, anatomia, botões e acessibilidade](https://www.gov.br/ds/components/modal), [Button — ênfase, posicionamento e teclado](https://www.gov.br/ds/components/button). A SPA oficial não expôs texto na nova consulta; lidas as páginas e exemplos do acervo oficial de 21/11/2026. O modal recomenda até dois botões e o alinhamento das ações à direita; canais adicionais foram mantidos como links no conteúdo. Não se atribui à documentação a decisão específica de dar prioridade ao download Word.
+
+Evidências adicionais: `validacoes/govbr-alinhamentos-2026-11-22.json` e `validacoes/govbr-compartilhamento-2026-11-22.json`, com capturas de 390/1440 px. Os testes medem posição, altura e contenção dos controles, não apenas ausência de transbordamento. Repetir no site público e registrar os arquivos com sufixo `-publicado`. Preservar os registros da primeira publicação com sufixo `-inicial`.
+
+Hospedagem confirmada pelo usuário: manter os destinos existentes, Render para os frontends e Hostinger para notas/APIs. A skill Sites foi usada apenas para boas práticas; nenhum Site, hospedagem ou migração foi criado. As 18 imagens preexistentes permanecem intactas no Git; o serviço pode entregar bytes reencodificados. A aprovação SHA-256 dos recursos de interface não inclui essas imagens. PNGs amostrados mantiveram os pixels após decodificação; não foi feita uma auditoria de recompressão de todos os JPEGs.
