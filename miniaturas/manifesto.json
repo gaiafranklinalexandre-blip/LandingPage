@@ -3,8 +3,8 @@
   "thumbnails": {
     "notas-tecnicas": {
       "src": "imagens/miniaturas/notas-tecnicas.jpg",
-      "sha256": "5fb93246667aa8896ea2facc2e4db95cda87d3a765dea206b1b430630e04a2dc",
-      "updatedAt": "2026-11-22T17:52:20.970Z"
+      "sha256": "f05d6bc3b02daf2e4912065247f8a3d3974120a8e779fcd7f39af2dd1634b538",
+      "updatedAt": "2026-11-22T18:22:30.124Z"
     },
     "credenciamentos-aps": {
       "src": "imagens/miniaturas/credenciamentos-aps.jpg",
@@ -33,8 +33,8 @@
     },
     "combo-acompanhamento": {
       "src": "imagens/miniaturas/combo-acompanhamento.jpg",
-      "sha256": "4dfa8739da8d0cf3a8970598ebdf60d256a0a455b3fe37d8077bfb4f49a9cc90",
-      "updatedAt": "2026-11-22T17:52:20.970Z"
+      "sha256": "ce1c6b6094b34212cdea43f1b29242bd10d5be28197c36509646388bf43b9639",
+      "updatedAt": "2026-11-22T18:22:30.124Z"
     },
     "cobertura-aps": {
       "src": "imagens/miniaturas/cobertura-aps.jpg",
@@ -53,8 +53,18 @@
     },
     "investsus-paineis": {
       "src": "imagens/miniaturas/investsus-paineis.jpg",
-      "sha256": "d25fa12048cf7714023da4fc686340be042b0c47255ad65710bc602ecf92eaf7",
-      "updatedAt": "2026-11-22T17:52:20.970Z"
+      "sha256": "182c51c0be44067dc5e65df8c260126c56122316df329b06d7d5a374f3f17b14",
+      "updatedAt": "2026-11-22T18:22:30.124Z"
+    },
+    "panorama-aps": {
+      "src": "imagens/miniaturas/panorama-aps.jpg",
+      "sha256": "8727cd74def8ca023265379e663ab80a6ac30a184009f9a8ca167e6f9283c61f",
+      "updatedAt": "2026-11-22T18:22:30.124Z"
+    },
+    "siaps": {
+      "src": "imagens/miniaturas/siaps.jpg",
+      "sha256": "18347c8d8bbf0f037180c2b89271c1b1c109fd9ed0da02d204d8e90df88d7551",
+      "updatedAt": "2026-11-22T18:22:30.124Z"
     }
   }
 }
