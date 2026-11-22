@@ -58,3 +58,7 @@ Referências consultadas: [Modal — uso, anatomia, botões e acessibilidade](ht
 Evidências adicionais: `validacoes/govbr-alinhamentos-2026-11-22.json` e `validacoes/govbr-compartilhamento-2026-11-22.json`, com capturas de 390/1440 px. Os testes medem posição, altura e contenção dos controles, não apenas ausência de transbordamento. Repetir no site público e registrar os arquivos com sufixo `-publicado`. Preservar os registros da primeira publicação com sufixo `-inicial`.
 
 Hospedagem confirmada pelo usuário: manter os destinos existentes, Render para os frontends e Hostinger para notas/APIs. A skill Sites foi usada apenas para boas práticas; nenhum Site, hospedagem ou migração foi criado. As 18 imagens preexistentes permanecem intactas no Git; o serviço pode entregar bytes reencodificados. A aprovação SHA-256 dos recursos de interface não inclui essas imagens. PNGs amostrados mantiveram os pixels após decodificação; não foi feita uma auditoria de recompressão de todos os JPEGs.
+
+## Publicação conferida
+
+Atualização final publicada e verificada em 22/11/2026. Commits: LandingPage `d556b0f`, notas-tecnicas-aps `05faafe`, Page_credenciamento `fa85599`, Credenciamentos `a4e1fba`. Vinte recursos de interface/dados estáticos conferidos por SHA-256 no Render; favicon comparado ao das Notas em três páginas (pixels e dimensões iguais, com reencodificação de entrega em parte das respostas). Testes públicos de alinhamento e compartilhamento aprovados. Registro: `validacoes/govbr-encerramento-2026-11-22.json`.
