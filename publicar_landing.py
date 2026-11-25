@@ -91,9 +91,12 @@ def enviar_arquivo(token, caminho_local, caminho_remoto, mensagem):
         raise RuntimeError(f'Erro ao publicar {caminho_remoto}: HTTP {e.code}') from None
 
 
-def publicar(token, totem_source):
-    from preparar_totems import preparar
-    preparar(totem_source)
+def publicar(token, totem_source=None, sem_totems=False):
+    if not sem_totems:
+        if totem_source is None:
+            raise ValueError('Informe --totem-source ou --sem-totems explicitamente.')
+        from preparar_totems import preparar
+        preparar(totem_source)
     print(f"Conectando ao GitHub ({REPO})...")
 
     html = (PASTA / ARQUIVO_LOCAL).read_text(encoding='utf-8')
@@ -112,25 +115,29 @@ def publicar(token, totem_source):
             raise FileNotFoundError('Recurso obrigatório ausente: ' + relativo)
         recursos.add(relativo)
     # Lista explícita: não enviar fontes municipais, referências ou arquivos privados.
-    for nome in ('index.html', 'totems.css', 'combo.html', 'equidade.html', 'manifesto.json'):
-        recursos.add('eventos/totems/' + nome)
+    if not sem_totems:
+        for nome in ('index.html', 'totems.css', 'combo.html', 'equidade.html', 'manifesto.json'):
+            recursos.add('eventos/totems/' + nome)
     # Recursos antes do HTML; comparação de hashes evita reenvios desnecessários.
     for relativo in sorted(recursos):
         enviar_arquivo(token, PASTA / relativo, relativo, 'Atualiza recurso visual SAPS: ' + relativo)
     for documento in ('AGENTS.md', 'README.md'):
         enviar_arquivo(token, PASTA.parent / documento, documento, 'Documenta identidade visual e publicação SAPS')
-    enviar_arquivo(token, PASTA / 'preparar_totems.py', 'preparar_totems.py', 'Sincroniza entregas standalone dos totens')
+    if not sem_totems:
+        enviar_arquivo(token, PASTA / 'preparar_totems.py', 'preparar_totems.py', 'Sincroniza entregas standalone dos totens')
     enviar_arquivo(token, Path(__file__), 'publicar_landing.py', 'Valida recursos e publicação no Render')
     enviar_arquivo(token, PASTA / ARQUIVO_LOCAL, ARQUIVO_REMOTO, 'Aplica identidade visual APS: navegação, cartões e privacidade')
 
     print()
     print("Publicado com sucesso!")
     print('  GitHub atualizado e conferido por hash. Aguardar deploy do Render.')
-    print('  Site: https://saps-atentimentos.onrender.com/')
+    print('  Site: https://atendimentos-saps.onrender.com/')
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--totem-source', required=True, type=Path, help='Pasta TOTEM com COMBO/index.html e EQUIDADE/index.html atuais')
+    grupo = parser.add_mutually_exclusive_group(required=True)
+    grupo.add_argument('--totem-source', type=Path, help='Atualiza também as entregas dos Totems; exige autorização para esse escopo')
+    grupo.add_argument('--sem-totems', action='store_true', help='Publica somente o portal e seus recursos; não prepara nem envia Totems')
     args = parser.parse_args()
-    publicar(carregar_token(), args.totem_source)
+    publicar(carregar_token(), args.totem_source, sem_totems=args.sem_totems)
