@@ -3,13 +3,13 @@
   "thumbnails": {
     "notas-tecnicas": {
       "src": "imagens/miniaturas/notas-tecnicas.jpg",
-      "sha256": "f05d6bc3b02daf2e4912065247f8a3d3974120a8e779fcd7f39af2dd1634b538",
-      "updatedAt": "2026-11-22T18:22:30.124Z"
+      "sha256": "38a283653ad3a35c2440261309994a2e2956ff4816b8f2d80934bbed7d306bdd",
+      "updatedAt": "2026-11-25T23:34:42.137Z"
     },
     "credenciamentos-aps": {
       "src": "imagens/miniaturas/credenciamentos-aps.jpg",
-      "sha256": "03d7ee8185a26ed4d1671c7fdb81283690a3959305c33e110f9cb2fe3ff73061",
-      "updatedAt": "2026-11-22T17:52:20.970Z"
+      "sha256": "a98595066972e0151757d619bed23bd3206e18bf3ac1184b4ad42c0bd3dd0756",
+      "updatedAt": "2026-11-25T23:34:42.137Z"
     },
     "aps-em-numeros": {
       "src": "imagens/miniaturas/aps-em-numeros.jpg",
@@ -33,8 +33,8 @@
     },
     "combo-acompanhamento": {
       "src": "imagens/miniaturas/combo-acompanhamento.jpg",
-      "sha256": "1a8da957c9a530b8ac9fe065f2d6043a9960aaed3912bd034b5e176da6f66dac",
-      "updatedAt": "2026-11-22T18:31:30.722Z"
+      "sha256": "3524d9319528b2aed36d46207a81944591cf6e68cba39ed634d4b3a99e18390b",
+      "updatedAt": "2026-11-25T23:34:42.137Z"
     },
     "cobertura-aps": {
       "src": "imagens/miniaturas/cobertura-aps.jpg",
@@ -63,8 +63,8 @@
     },
     "siaps": {
       "src": "imagens/miniaturas/siaps.jpg",
-      "sha256": "18347c8d8bbf0f037180c2b89271c1b1c109fd9ed0da02d204d8e90df88d7551",
-      "updatedAt": "2026-11-22T18:22:30.124Z"
+      "sha256": "13bb2b0c0694ff598d042ce5322070c64dba76565f48a052377074962b2cca67",
+      "updatedAt": "2026-11-25T23:34:42.137Z"
     }
   }
 }
