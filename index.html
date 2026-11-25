@@ -454,7 +454,9 @@
         gap: 12px;
       }
     }
-  </style>
+  .acessar>[aria-hidden="true"]{margin-left:6px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
   <link rel="stylesheet" href="visual_saps.css?v=f537f1ac740b">
   <link rel="stylesheet" href="privacidade.css?v=39c43c212e5f">
 <link rel="stylesheet" href="govbr_base.css?v=c34212163a44">
@@ -495,12 +497,12 @@
             <img src="imagens/credenciamentos.png" alt="Prévia do Painel dos Credenciamentos da APS" loading="lazy" onerror="handleImgError(this)">
           </div>
           <div class="card-title">
-            <h3><span class="cat-icon">🌐</span>Painel dos Credenciamentos da APS</h3>
+            <h3><span class="cat-icon" aria-hidden="true">🌐</span>Painel dos Credenciamentos da APS</h3>
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           </div><div class="card-content"><p class="desc">Disponibiliza informações sobre prazos de credenciamento, com o objetivo de orientar os municípios e apoiar a implantação oportuna.</p></div><div class="card-footer">
-          <a class="acessar br-button primary" href="https://painel-credenciamentos.onrender.com/" target="_blank" rel="noopener"
-             onclick="rastrearClique('Painel dos Credenciamentos da APS', 'Público', 'https://painel-credenciamentos.onrender.com/')">Abrir</a></div>
+          <a class="acessar br-button primary" href="https://credenciamentos.onrender.com/" target="_blank" rel="noopener"
+             onclick="rastrearClique('Painel dos Credenciamentos da APS', 'Público', 'https://credenciamentos.onrender.com/')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Painel dos Credenciamentos da APS (abre em nova aba)</span></a></div>
         </div>
 
         <div class="card br-card cat-publico" data-id="mais-medicos"><div class="card-header">
@@ -509,12 +511,12 @@
             <img src="imagens/mais-medicos.png" alt="Prévia do Painel Mais Médicos" loading="lazy" onerror="handleImgError(this)">
           </div>
           <div class="card-title">
-            <h3><span class="cat-icon">🌐</span>Painel Mais Médicos</h3>
+            <h3><span class="cat-icon" aria-hidden="true">🌐</span>Painel Mais Médicos</h3>
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           </div><div class="card-content"><p class="desc">Ferramenta interativa e transparente do Ministério da Saúde voltada para o monitoramento e a gestão do Programa Mais Médicos.</p></div><div class="card-footer">
           <a class="acessar br-button primary" href="https://app.powerbi.com/view?r=eyJrIjoiMTZkYzIxZGUtMTU5NS00NDllLWI4OGMtM2VhMzJmNDJkZWI4IiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9&pageName=ad4a2a374aec48992ed2" target="_blank" rel="noopener"
-             onclick="rastrearClique('Painel Mais Médicos', 'Público', 'powerbi_mais_medicos')">Abrir</a></div>
+             onclick="rastrearClique('Painel Mais Médicos', 'Público', 'powerbi_mais_medicos')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Painel Mais Médicos (abre em nova aba)</span></a></div>
         </div>
       </div>
     </section>
@@ -531,12 +533,12 @@
               <img src="imagens/panorama-aps.png" alt="Prévia do Painel Panorama APS" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3><span class="cat-icon">💰</span>Painel Panorama APS</h3>
+              <h3><span class="cat-icon" aria-hidden="true">💰</span>Painel Panorama APS</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             </div><div class="card-content"><p class="desc">Apresenta um retrato abrangente da situação do município, com informações estratégicas sobre estrutura, indicadores e financiamento da APS.</p></div><div class="card-footer">
             <a class="acessar br-button primary" href="https://apspanorama.onrender.com/" target="_blank" rel="noopener"
-               onclick="rastrearClique('Painel Panorama APS', 'Interno', 'https://apspanorama.onrender.com/')">Abrir</a></div>
+               onclick="rastrearClique('Painel Panorama APS', 'Interno', 'https://apspanorama.onrender.com/')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Painel Panorama APS (abre em nova aba)</span></a></div>
           </div>
 
           <div class="card br-card cat-financiamento" data-id="aps-em-numeros"><div class="card-header">
@@ -545,12 +547,12 @@
               <img src="imagens/aps-em-numeros.png" alt="Prévia do painel APS em Números" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3><span class="cat-icon">💰</span>APS em Números</h3>
+              <h3><span class="cat-icon" aria-hidden="true">💰</span>APS em Números</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             </div><div class="card-content"><p class="desc">Painel com indicadores consolidados da Atenção Primária à Saúde para apoio à gestão e à tomada de decisão.</p></div><div class="card-footer">
             <a class="acessar br-button primary" href="https://app.powerbi.com/view?r=eyJrIjoiOWRmOTNkZjktYjhkZC00NjI2LTk0YzQtMDEwNTY3OWQ5NWUzIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
-               onclick="rastrearClique('APS em Números', 'Interno', 'powerbi_aps_em_numeros')">Abrir</a></div>
+               onclick="rastrearClique('APS em Números', 'Interno', 'powerbi_aps_em_numeros')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: APS em Números (abre em nova aba)</span></a></div>
           </div>
 
           <div class="card br-card cat-financiamento" data-id="siops"><div class="card-header">
@@ -559,12 +561,12 @@
               <img src="imagens/SIOPS.png" alt="Prévia do painel SIOPS" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3><span class="cat-icon">💰</span>SIOPS</h3>
+              <h3><span class="cat-icon" aria-hidden="true">💰</span>SIOPS</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             </div><div class="card-content"><p class="desc">Painel interativo com nova experiência de consulta dos indicadores municipais do SIOPS.</p></div><div class="card-footer">
             <a class="acessar br-button primary" href="https://portal-dados-municipais.lovable.app/" target="_blank" rel="noopener"
-               onclick="rastrearClique('SIOPS', 'Interno', 'https://portal-dados-municipais.lovable.app/')">Abrir</a></div>
+               onclick="rastrearClique('SIOPS', 'Interno', 'https://portal-dados-municipais.lovable.app/')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: SIOPS (abre em nova aba)</span></a></div>
           </div>
 
           <div class="card br-card cat-financiamento" data-id="notas-tecnicas"><div class="card-header">
@@ -573,12 +575,12 @@
               <img src="imagens/notas-tecnicas.png" alt="Prévia do painel Notas Técnicas" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3><span class="cat-icon">💰</span>Notas Técnicas</h3>
+              <h3><span class="cat-icon" aria-hidden="true">💰</span>Notas Técnicas</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             </div><div class="card-content"><p class="desc">Reúne dados detalhados e organizados para subsidiar respostas rápidas, consistentes e tecnicamente qualificadas às demandas de informação.</p></div><div class="card-footer">
             <a class="acessar br-button primary" href="https://notas-tecnicas-aps.onrender.com/" target="_blank" rel="noopener"
-               onclick="return abrirPainel(event, this, 'Notas Técnicas', 'Interno')">Abrir</a></div>
+               onclick="return abrirPainel(event, this, 'Notas Técnicas', 'Interno')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Notas Técnicas (abre em nova aba)</span></a></div>
           </div>
         </div>
       </div>
@@ -592,12 +594,12 @@
               <img src="imagens/censo-nacional-ubs.png" alt="Prévia do painel Censo Nacional das UBS" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3><span class="cat-icon">🏥</span>Censo Nacional das UBS</h3>
+              <h3><span class="cat-icon" aria-hidden="true">🏥</span>Censo Nacional das UBS</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             </div><div class="card-content"><p class="desc">Resultados do Censo Nacional das UBS, com informações que subsidiam análises, debates internos e reflexões sobre a qualificação da gestão.</p></div><div class="card-footer">
             <a class="acessar br-button primary" href="https://app.powerbi.com/view?r=eyJrIjoiZjdkMjIyMjUtZjhiNi00NmY3LTgwOTQtMTBkMzljZjFjYzkxIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
-               onclick="rastrearClique('Censo Nacional das UBS', 'Interno', 'powerbi_censo_nacional_ubs')">Abrir</a></div>
+               onclick="rastrearClique('Censo Nacional das UBS', 'Interno', 'powerbi_censo_nacional_ubs')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Censo Nacional das UBS (abre em nova aba)</span></a></div>
           </div>
 
           <div class="card br-card cat-censo-ubs" data-id="censo-ubs-fluvial"><div class="card-header">
@@ -606,12 +608,12 @@
               <img src="imagens/censo-ubs-fluvial.png" alt="Prévia do painel Censo das UBS Fluvial" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3><span class="cat-icon">🏥</span>Censo das UBS — Fluvial</h3>
+              <h3><span class="cat-icon" aria-hidden="true">🏥</span>Censo das UBS — Fluvial</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             </div><div class="card-content"><p class="desc">Informações específicas sobre as UBS Fluviais, permitindo análises direcionadas às singularidades da atenção à saúde em contextos fluviais.</p></div><div class="card-footer">
             <a class="acessar br-button primary" href="https://app.powerbi.com/view?r=eyJrIjoiMmNmNTQ1NWQtNzdmOC00OTg0LTlmZTMtNDg5NTc0OWE5NmRkIiwidCI6IjlhNTU0YWQzLWI1MmItNDg2Mi1hMzZmLTg0ZDg5MWU1YzcwNSJ9" target="_blank" rel="noopener"
-               onclick="rastrearClique('Censo das UBS - Fluvial', 'Interno', 'powerbi_censo_ubs_fluvial')">Abrir</a></div>
+               onclick="rastrearClique('Censo das UBS - Fluvial', 'Interno', 'powerbi_censo_ubs_fluvial')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Censo das UBS - Fluvial (abre em nova aba)</span></a></div>
           </div>
         </div>
       </div>
@@ -625,12 +627,12 @@
               <img src="imagens/painel-agsus.png" alt="Prévia do Painel de Monitoramento de Entregas dos Combos AgSUS" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3><span class="cat-icon">⚙️</span>Painel de Monitoramento de Entregas dos Combos AgSUS</h3>
+              <h3><span class="cat-icon" aria-hidden="true">⚙️</span>Painel de Monitoramento de Entregas dos Combos AgSUS</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             </div><div class="card-content"><p class="desc">Distribuição dos equipamentos por município, ampliando a transparência da ação e apoiando o acompanhamento da entrega dos combos para UBS.</p></div><div class="card-footer">
             <a class="acessar br-button primary" href="https://app.powerbi.com/groups/me/reports/15cef623-63dc-4a27-a26b-6ae2991eaf70/eb15333dd8d9040b1ce8?ctid=7673b0fd-2c63-4ac7-9d35-a71abe702c9b&amp;experience=power-bi" target="_blank" rel="noopener"
-               onclick="rastrearClique('Painel de Monitoramento de Entregas dos Combos AgSUS', 'Interno', 'powerbi_agsus')">Abrir</a></div>
+               onclick="rastrearClique('Painel de Monitoramento de Entregas dos Combos AgSUS', 'Interno', 'powerbi_agsus')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Painel de Monitoramento de Entregas dos Combos AgSUS (abre em nova aba)</span></a></div>
           </div>
 
           <div class="card br-card cat-combos-ubs" data-id="combo-acompanhamento"><div class="card-header">
@@ -639,12 +641,12 @@
               <img src="imagens/combo-acompanhamento.jpg" alt="Prévia do Painel de Acompanhamento do Combo de Equipamentos da APS" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3><span class="cat-icon">⚙️</span>Painel de Acompanhamento do Combo de Equipamentos da APS</h3>
+              <h3><span class="cat-icon" aria-hidden="true">⚙️</span>Painel de Acompanhamento do Combo de Equipamentos da APS</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             </div><div class="card-content"><p class="desc">Acompanhamento das entregas do combo de equipamentos da APS e do fluxo dos termos de doação.</p></div><div class="card-footer">
             <a class="acessar br-button primary" href="https://painel-cgfap-combo.netlify.app/" target="_blank" rel="noopener"
-               onclick="rastrearClique('Painel de Acompanhamento do Combo de Equipamentos da APS', 'Interno', 'web_combo_acompanhamento')">Abrir</a></div>
+               onclick="rastrearClique('Painel de Acompanhamento do Combo de Equipamentos da APS', 'Interno', 'web_combo_acompanhamento')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Painel de Acompanhamento do Combo de Equipamentos da APS (abre em nova aba)</span></a></div>
           </div>
         </div>
       </div>
@@ -658,12 +660,12 @@
               <img src="imagens/cobertura-cgfap.jpg" alt="Prévia do painel Cobertura da APS" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3><span class="cat-icon">📈</span>Cobertura da APS</h3>
+              <h3><span class="cat-icon" aria-hidden="true">📈</span>Cobertura da APS</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             </div><div class="card-content"><p class="desc">Cobertura da Estratégia Saúde da Família e da Saúde Bucal.</p></div><div class="card-footer">
             <a class="acessar br-button primary" href="https://painel-cobertura-aps-cgfap.netlify.app/" target="_blank" rel="noopener"
-               onclick="rastrearClique('Cobertura da APS', 'Interno', 'web_cobertura_aps')">Abrir</a></div>
+               onclick="rastrearClique('Cobertura da APS', 'Interno', 'web_cobertura_aps')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Cobertura da APS (abre em nova aba)</span></a></div>
           </div>
         </div>
       </div>
@@ -677,12 +679,12 @@
               <img src="imagens/obras-aps.jpg" alt="Prévia do Painel de Obras da Atenção Primária" loading="lazy" onerror="handleImgError(this)">
             </div>
             <div class="card-title">
-              <h3><span class="cat-icon">🏗️</span>Painel de Obras da Atenção Primária</h3>
+              <h3><span class="cat-icon" aria-hidden="true">🏗️</span>Painel de Obras da Atenção Primária</h3>
               <span class="badge interno"><span class="dot"></span>Interno</span>
             </div>
             </div><div class="card-content"><p class="desc">Acompanhamento das obras de unidades da Atenção Primária.</p></div><div class="card-footer">
             <a class="acessar br-button primary" href="https://painel-obras-aps-cgfap.netlify.app/" target="_blank" rel="noopener"
-               onclick="rastrearClique('Painel de Obras da Atenção Primária', 'Interno', 'web_obras_aps')">Abrir</a></div>
+               onclick="rastrearClique('Painel de Obras da Atenção Primária', 'Interno', 'web_obras_aps')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Painel de Obras da Atenção Primária (abre em nova aba)</span></a></div>
           </div>
         </div>
       </div>
@@ -697,12 +699,12 @@
             <img src="imagens/egestor-aps.png" alt="Prévia do sistema e-Gestor APS" loading="lazy" onerror="handleImgError(this)">
           </div>
           <div class="card-title">
-            <h3><span class="cat-icon">🔗</span>e-Gestor APS</h3>
+            <h3><span class="cat-icon" aria-hidden="true">🔗</span>e-Gestor APS</h3>
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           </div><div class="card-content"><p class="desc">Sistema oficial de gestão da Atenção Primária à Saúde do Ministério da Saúde.</p></div><div class="card-footer">
           <a class="acessar br-button primary" href="https://egestoraps.saude.gov.br/" target="_blank" rel="noopener"
-             onclick="rastrearClique('e-Gestor APS', 'Link útil', 'https://egestoraps.saude.gov.br/')">Abrir</a></div>
+             onclick="rastrearClique('e-Gestor APS', 'Link útil', 'https://egestoraps.saude.gov.br/')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: e-Gestor APS (abre em nova aba)</span></a></div>
         </div>
 
         <div class="card br-card cat-sistemas" data-id="investsus-paineis"><div class="card-header">
@@ -711,12 +713,12 @@
             <img src="imagens/investsus-paineis.png" alt="Prévia do painel InvestSUS Painéis" loading="lazy" onerror="handleImgError(this)">
           </div>
           <div class="card-title">
-            <h3><span class="cat-icon">🔗</span>InvestSUS Painéis</h3>
+            <h3><span class="cat-icon" aria-hidden="true">🔗</span>InvestSUS Painéis</h3>
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           </div><div class="card-content"><p class="desc">Evolução mais recente dos municípios nos últimos 12 meses, com dados sobre equipes, cobertura, suspensões e financiamento da APS.</p></div><div class="card-footer">
           <a class="acessar br-button primary" href="https://investsuspaineis.saude.gov.br/extensions/CGIN_InvestsusPaineis/CGIN_InvestsusPaineis.html" target="_blank" rel="noopener"
-             onclick="rastrearClique('InvestSUS Painéis', 'Link útil', 'https://investsuspaineis.saude.gov.br/extensions/CGIN_InvestsusPaineis/CGIN_InvestsusPaineis.html')">Abrir</a></div>
+             onclick="rastrearClique('InvestSUS Painéis', 'Link útil', 'https://investsuspaineis.saude.gov.br/extensions/CGIN_InvestsusPaineis/CGIN_InvestsusPaineis.html')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: InvestSUS Painéis (abre em nova aba)</span></a></div>
         </div>
 
         <div class="card br-card cat-sistemas" data-id="siaps"><div class="card-header">
@@ -725,12 +727,12 @@
             <img src="imagens/siaps.png" alt="Prévia do sistema SIAPS" loading="lazy" onerror="handleImgError(this)">
           </div>
           <div class="card-title">
-            <h3><span class="cat-icon">🔗</span>SIAPS</h3>
+            <h3><span class="cat-icon" aria-hidden="true">🔗</span>SIAPS</h3>
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           </div><div class="card-content"><p class="desc">O SIAPS (Sistema de Informação para a Atenção Primária à Saúde) é a plataforma oficial do Ministério da Saúde para monitoramento e gestão da Atenção Primária no SUS.</p></div><div class="card-footer">
           <a class="acessar br-button primary" href="https://siaps.saude.gov.br/publico" target="_blank" rel="noopener"
-             onclick="rastrearClique('SIAPS', 'Link útil', 'https://siaps.saude.gov.br/publico')">Abrir</a></div>
+             onclick="rastrearClique('SIAPS', 'Link útil', 'https://siaps.saude.gov.br/publico')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: SIAPS (abre em nova aba)</span></a></div>
         </div>
       </div>
     </section>
@@ -743,7 +745,7 @@
           <div class="thumb"><img src="imagens/totems.svg" alt="Totem para eventos" loading="lazy" onerror="handleImgError(this)"></div>
           <div class="card-title"><h3>Totem para eventos</h3><span class="badge interno"><span class="dot"></span>Interno</span></div>
           </div><div class="card-content"><p class="desc">Acesse o Jogo do Combo de Equipamentos para UBS e o Totem Caminhos da Equidade. Visualize online ou baixe para usar sem internet nos eventos.</p></div><div class="card-footer">
-          <a class="acessar br-button primary" href="eventos/totems/index.html" onclick="rastrearClique('Totems', 'Eventos', this.href)">Abrir</a></div>
+          <a class="acessar br-button primary" href="eventos/totems/index.html" onclick="rastrearClique('Totems', 'Eventos', this.href)">Abrir<span class="sr-only">: Totems</span></a></div>
         </div>
       </div>
     </section>
@@ -758,7 +760,7 @@
       <div class="modal-header br-modal-header">
         <h3 id="modalTitulo">Painel</h3>
         <div class="modal-actions">
-          <a id="modalNovaAba" class="modal-link" href="#" target="_blank" rel="noopener">Abrir em nova aba ↗</a>
+          <a id="modalNovaAba" class="modal-link" href="#" target="_blank" rel="noopener">Abrir em nova aba <span aria-hidden="true">↗</span></a>
           <button type="button" class="modal-close br-button circle tertiary" aria-label="Fechar" onclick="fecharModal()">✕</button>
         </div>
       </div>
