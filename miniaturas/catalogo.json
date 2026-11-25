@@ -10,7 +10,7 @@
   "targets": [
     {
       "id": "credenciamentos-aps",
-      "url": "https://painel-credenciamentos.onrender.com/",
+      "url": "https://credenciamentos.onrender.com/",
       "enabled": true,
       "waitMs": 20000
     },
