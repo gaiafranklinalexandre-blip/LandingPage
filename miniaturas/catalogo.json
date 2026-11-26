@@ -10,7 +10,7 @@
   "targets": [
     {
       "id": "credenciamentos-aps",
-      "url": "https://credenciamentos.onrender.com/",
+      "url": "https://painel-credenciamentos.onrender.com/",
       "enabled": true,
       "waitMs": 20000
     },
@@ -96,6 +96,12 @@
       "url": "https://atendimentos-saps.onrender.com/eventos/totems/index.html",
       "enabled": false,
       "reason": "Totems preservados conforme exceção do usuário"
+    },
+    {
+      "id": "guia-cofinanciamento-federal-aps",
+      "url": "https://bvsms.saude.gov.br/bvs/publicacoes/guia_cofinanciamento_federal_aps.pdf",
+      "enabled": false,
+      "reason": "Documento PDF; usar a capa oficial extraída da publicação"
     }
   ]
 }

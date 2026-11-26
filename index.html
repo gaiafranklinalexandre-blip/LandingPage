@@ -463,6 +463,7 @@ html{scrollbar-color:var(--gray-30,#adadad) var(--gray-10,#e6e6e6)}
     <button class="nav-item menu-item" type="button" data-filter="publico" aria-label="Painéis públicos"><i class="fas fa-globe-americas nav-icon" aria-hidden="true"></i><span>Painéis públicos</span></button>
     <button class="nav-item menu-item" type="button" data-filter="interno" aria-label="Painéis internos"><i class="fas fa-lock nav-icon" aria-hidden="true"></i><span>Painéis internos</span></button>
     <button class="nav-item menu-item" type="button" data-filter="sistemas" aria-label="Sistemas e links úteis"><i class="fas fa-desktop nav-icon" aria-hidden="true"></i><span>Sistemas e links úteis</span></button>
+    <button class="nav-item menu-item" type="button" data-filter="publicacoes" aria-label="Publicações"><i class="fas fa-file-alt nav-icon" aria-hidden="true"></i><span>Publicações</span></button>
     <button class="nav-item menu-item" type="button" data-filter="eventos" aria-label="Eventos"><i class="fas fa-calendar-alt nav-icon" aria-hidden="true"></i><span>Eventos</span></button>
   </nav><div class="nav-title temas">TEMAS</div><nav aria-label="Temas dos painéis">
     <button class="nav-item menu-item" type="button" data-filter="financiamento" aria-label="Financiamento"><i class="fas fa-money-bill-wave nav-icon" aria-hidden="true"></i><span>Financiamento</span></button>
@@ -474,7 +475,7 @@ html{scrollbar-color:var(--gray-30,#adadad) var(--gray-10,#e6e6e6)}
 </div></div></div></aside><main id="conteudo" tabindex="-1">
   <nav class="breadcrumb br-breadcrumb" aria-label="Navegação"><ol class="crumb-list" role="list"><li class="crumb home"><a class="br-button circle" href="#conteudo" aria-label="Ir para o conteúdo"><i class="fas fa-home" aria-hidden="true"></i></a></li><li class="crumb"><i class="icon fas fa-chevron-right" aria-hidden="true"></i><span>Gestão da APS</span></li><li class="crumb" data-active="active"><i class="icon fas fa-chevron-right" aria-hidden="true"></i><span aria-current="page" id="breadcrumbCurrent">Todos os painéis</span></li></ol></nav>
   <div class="page-heading"><p>Encontre as informações de que precisa em um só lugar.</p></div>
-  <div class="busca-bar"><div class="br-input"><label for="busca">Encontre um painel</label><input type="search" class="busca-input" id="busca" placeholder="Pesquisar por nome ou palavra-chave…" oninput="aplicarFiltros()"></div><button type="button" class="favoritos-toggle br-button secondary" id="favoritosToggle" aria-pressed="false" onclick="alternarFavoritosToggle()">☆ Somente favoritos</button><button type="button" class="clear-search br-button tertiary" id="clearSearch">Limpar seleções</button></div>
+  <div class="busca-bar"><div class="br-input"><label for="busca">Encontre um painel ou publicação</label><input type="search" class="busca-input" id="busca" placeholder="Pesquisar por nome ou palavra-chave…" oninput="aplicarFiltros()"></div><button type="button" class="favoritos-toggle br-button secondary" id="favoritosToggle" aria-pressed="false" onclick="alternarFavoritosToggle()">☆ Somente favoritos</button><button type="button" class="clear-search br-button tertiary" id="clearSearch">Limpar seleções</button></div>
   <div class="results"><span id="resultCount" role="status" aria-live="polite"></span><span id="filterCurrent" class="filter-chip" hidden>Todos os painéis</span></div>
 
     <section class="grupo">
@@ -490,8 +491,8 @@ html{scrollbar-color:var(--gray-30,#adadad) var(--gray-10,#e6e6e6)}
             <span class="badge publico"><span class="dot"></span>Público</span>
           </div>
           </div><div class="card-content"><p class="desc">Disponibiliza informações sobre prazos de credenciamento, com o objetivo de orientar os municípios e apoiar a implantação oportuna.</p></div><div class="card-footer">
-          <a class="acessar br-button primary" href="https://credenciamentos.onrender.com/" target="_blank" rel="noopener"
-             onclick="rastrearClique('Painel dos Credenciamentos da APS', 'Público', 'https://credenciamentos.onrender.com/')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Painel dos Credenciamentos da APS (abre em nova aba)</span></a></div>
+          <a class="acessar br-button primary" href="https://painel-credenciamentos.onrender.com/" target="_blank" rel="noopener"
+             onclick="rastrearClique('Painel dos Credenciamentos da APS', 'Público', 'https://painel-credenciamentos.onrender.com/')">Abrir <span aria-hidden="true">↗</span><span class="sr-only">: Painel dos Credenciamentos da APS (abre em nova aba)</span></a></div>
         </div>
 
         <div class="card br-card cat-publico" data-id="mais-medicos"><div class="card-header">
@@ -739,7 +740,21 @@ html{scrollbar-color:var(--gray-30,#adadad) var(--gray-10,#e6e6e6)}
       </div>
     </section>
 
-    <p class="empty-state" id="estadoVazio">Nenhum painel encontrado para esta busca.</p>
+    <section class="grupo" aria-labelledby="publicacoesTitulo">
+      <h2 id="publicacoesTitulo">Publicações</h2>
+      <div class="cards">
+        <div class="card br-card cat-publicacoes" data-id="guia-cofinanciamento-federal-aps"><div class="card-header">
+          <button class="favorite-btn br-button circle tertiary" type="button" aria-label="Favoritar Guia do Cofinanciamento Federal da APS" onclick="alternarFavorito(event, 'guia-cofinanciamento-federal-aps', this)">☆</button>
+          <div class="thumb"><img src="imagens/guia-cofinanciamento-federal-aps.png" alt="Capa do Guia do Cofinanciamento Federal da APS" loading="lazy" onerror="handleImgError(this)" style="object-fit:contain"></div>
+          <div class="card-title"><h3>Guia do Cofinanciamento Federal da APS</h3><span class="badge publico">PDF</span></div>
+          </div><div class="card-content"><p class="desc">Ampliando o acesso e qualificando o cuidado na Atenção Primária à Saúde no âmbito do Sistema Único de Saúde (SUS). Ministério da Saúde, 2026.</p></div><div class="card-footer">
+          <a class="acessar br-button primary" href="https://bvsms.saude.gov.br/bvs/publicacoes/guia_cofinanciamento_federal_aps.pdf" target="_blank" rel="noopener"
+             onclick="rastrearClique('Guia do Cofinanciamento Federal da APS', 'Publicações', this.href)">Abrir PDF<span class="sr-only">: Guia do Cofinanciamento Federal da APS (abre em nova aba)</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <p class="empty-state" id="estadoVazio">Nenhum conteúdo encontrado para esta busca.</p>
   </main></div>
 
   <footer class="br-footer"><div class="container-lg portal-footer-inner"><span>Ministério da Saúde · SAPS · Gestão da APS — 2026</span></div></footer>
@@ -906,7 +921,7 @@ html{scrollbar-color:var(--gray-30,#adadad) var(--gray-10,#e6e6e6)}
       }
     });
   </script>
-  <script src="visual_saps.js?v=397091e12929"></script>
+  <script src="visual_saps.js?v=ff645c243620"></script>
   <script src="privacidade.js?v=e7c4b54c07fa"></script>
 <script defer src="miniaturas/cliente.js?v=d82b988292a5"></script>
 </body>

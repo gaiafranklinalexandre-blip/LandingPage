@@ -2,6 +2,16 @@
 
 # Landing page de painéis SAPS
 
+## Publicações e destino Credenciamentos — 26/11/2026
+
+Incluída a opção **Publicações** no menu e a seção correspondente, com o Guia do Cofinanciamento Federal da APS (Ministério da Saúde, 2026). O botão **Abrir PDF** aponta diretamente para a [BVS/MS](https://bvsms.saude.gov.br/bvs/publicacoes/guia_cofinanciamento_federal_aps.pdf), em nova aba; a capa em `Panorama_APS/imagens/guia-cofinanciamento-federal-aps.png` foi extraída da primeira página do PDF oficial. Busca, favoritos e contador incluem a publicação; ela não aparece em Painéis internos. No celular, a escolha da categoria fecha o menu e leva o foco ao conteúdo.
+
+Por solicitação atual do usuário, o card Credenciamentos e `miniaturas/catalogo.json` usam **https://painel-credenciamentos.onrender.com/**. Esta decisão substitui o destino escolhido em 25/11, sem alterar o painel de destino. O catálogo registra o PDF sem captura automática, preservando a capa oficial. São 17 cartões no portal; os 16 anteriores foram preservados, exceto a troca de destino solicitada.
+
+Validação local: navegação por teclado, filtros, busca, favoritos persistidos, foco no celular, oito larguras de 320 a 1920 px, modal e consentimento, sem erros JavaScript ou rolagem horizontal. Nu: zero erros e um aviso preexistente (`role="list"` redundante no breadcrumb). Referências aplicadas: Menu e Card da coleta oficial gov.br DS de 21/11/2026, conforme o guia comum; Core 3.7.0 e marca SUS preservados. Evidências: `validacao/landing-publicacoes-20261126.json` e `validacao/nu-publicacoes-20261126.json`. Teste com leitor de tela e zoom real não executado.
+
+**Publicação autorizada pelo usuário em 26/11/2026: “ok publique”.** Envio restrito ao HTML como `index.html`, `visual_saps.js`, capa, `miniaturas/catalogo.json`, documentação de miniaturas e este README. Totems e demais recursos remotos preservados. O envio ao GitHub deve ser seguido da conferência do Render e da execução das miniaturas; a autorização não constitui evidência de implantação.
+
 ## Miniaturas automáticas — 22/11/2026
 
 Configuradas para atualizar a cada publicação do hub, conforme escolha do usuário. Fontes e manutenção: [miniaturas](Panorama_APS/miniaturas/README.md). São 14 tentativas públicas de captura; AgSUS autenticado e Totems mantêm suas imagens. Falhas conservam a última imagem/fallback. A execução usa o GitHub do projeto e o deploy atual do Render; notas/APIs continuam na Hostinger. O navegador consulta o manifesto e troca somente as imagens, sem alterar os cards ou suas ações.

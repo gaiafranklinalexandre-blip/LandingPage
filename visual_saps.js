@@ -4,7 +4,7 @@ function combinaCategoria(card){
  if(c==='todos')return true;
  if(c==='publico')return card.classList.contains('cat-publico');
  if(c==='sistemas')return card.classList.contains('cat-sistemas');
- if(c==='interno')return !card.classList.contains('cat-publico')&&!card.classList.contains('cat-sistemas');
+ if(c==='interno')return !card.classList.contains('cat-publico')&&!card.classList.contains('cat-sistemas')&&!card.classList.contains('cat-publicacoes');
  return card.classList.contains('cat-'+c);
 }
 (()=>{
@@ -13,8 +13,8 @@ function combinaCategoria(card){
  function close(){document.body.classList.remove('menu-open');state();}
  $('menuToggle').onclick=()=>{document.body.classList.toggle(matchMedia('(max-width:800px)').matches?'menu-open':'collapsed');state();};$('menuBackdrop').onclick=close;window.addEventListener('resize',state);state();
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('menu-open')){close();$('menuToggle').focus();}});
- document.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{filtroCategoria=btn.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('active',b===btn);if(b===btn)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});$('breadcrumbCurrent').textContent=btn.textContent.trim();$('filterCurrent').textContent=btn.textContent.trim();$('filterCurrent').hidden=btn.dataset.filter==='todos';aplicarFiltros();close();}));
+ document.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{filtroCategoria=btn.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('active',b===btn);if(b===btn)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});$('breadcrumbCurrent').textContent=btn.textContent.trim();$('filterCurrent').textContent=btn.textContent.trim();$('filterCurrent').hidden=btn.dataset.filter==='todos';aplicarFiltros();close();if(matchMedia('(max-width:800px)').matches)$('conteudo').focus();}));
  $('clearSearch').onclick=()=>{$('busca').value='';const fav=$('favoritosToggle');fav.classList.remove('ativo');fav.textContent='☆ Somente favoritos';fav.setAttribute('aria-pressed','false');document.querySelector('[data-filter="todos"]').click();};
- window.atualizarContagem=()=>{const cards=[...document.querySelectorAll('.card')];$('resultCount').textContent=cards.filter(c=>c.style.display!=='none').length+' de '+cards.length+' painéis e sistemas';};
+ window.atualizarContagem=()=>{const cards=[...document.querySelectorAll('.card')];$('resultCount').textContent=cards.filter(c=>c.style.display!=='none').length+' de '+cards.length+' painéis, sistemas e publicações';};
  aplicarFiltros();
 })();

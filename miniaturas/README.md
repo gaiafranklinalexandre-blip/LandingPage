@@ -12,7 +12,7 @@ A automação usa Node 24, Playwright **1.64.1** e Chromium no Ubuntu 24.04. As 
 
 ## Escopo e preservação
 
-`catalogo.json` contém os 16 cards e seus destinos. São 14 tentativas públicas habilitadas. O Power BI AgSUS que exige login mantém a miniatura existente; Totems ficam excluídos conforme a decisão do usuário. A rotina não autentica, não acessa dados privados, não altera o conteúdo dos painéis nem modifica Totems/Modo Tático.
+`catalogo.json` contém os 17 cards e seus destinos, incluindo o Guia do Cofinanciamento Federal da APS adicionado em 26/11/2026. São 14 tentativas públicas habilitadas. O Power BI AgSUS que exige login mantém a miniatura existente; Totems ficam excluídos conforme a decisão do usuário. O guia em PDF usa a capa oficial extraída da primeira página, sem captura automática. O destino de Credenciamentos é `https://painel-credenciamentos.onrender.com/`, conforme o pedido atual do usuário. A rotina não autentica, não acessa dados privados, não altera o conteúdo dos painéis nem modifica Totems/Modo Tático.
 
 HTTP de erro, redirecionamento de login, campo de senha, mensagem de indisponibilidade, página incompleta, captura vazia e timeout preservam a imagem anterior. As verificações são técnicas; não substituem uma revisão humana do conteúdo de sites terceiros. Falhas individuais ficam no resumo da execução. Caso todos os destinos falhem, o hub continua com os fallbacks.
 
